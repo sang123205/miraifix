@@ -19,9 +19,6 @@ module.exports = function({ sequelize, Sequelize }) {
         },
 		data: {
 			type: Sequelize.JSON
-		},
-		fishy: {
-			type: Sequelize.JSON
 		}
 	});
 
