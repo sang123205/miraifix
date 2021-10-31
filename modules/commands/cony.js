@@ -5,7 +5,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "HungCatMoi",
 	description: "Tỉ lệ có Ny của bạn trong năm nay",
-	commandCategory: "random-img", 
+	commandCategory: "Hình ảnh", 
 	usages: "cony", 
 	cooldowns: 0,
 	dependencies: [] 

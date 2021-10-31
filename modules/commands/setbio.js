@@ -11,5 +11,5 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args }) {
 	 api.changeBio(`${args.join(" ")}`);
-	  api.sendMessage(`Đã đổi tiểu sử của Pò thành :${args.join(" ")}`, event.threadID);
+	  api.sendMessage(`Đã đổi tiểu sử của bot là :${args.join(" ")}`, event.threadID);
 }

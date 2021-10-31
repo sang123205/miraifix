@@ -5,7 +5,7 @@ module.exports.config = {
     credits: "loi",
     description: "thay đổi số tiền của bản thân hoặc người được tag",
     commandCategory: "Economy",
-    usages: "[args]",
+    usages: "setmoney [Tag]",
     cooldowns: 5,
     info: [
         {
@@ -21,6 +21,6 @@ module.exports.run = async function({ api, event, args, Currencies, utils }) {
     if(args[0]=="money"){
 var mention = Object.keys(event.mentions)[0];
         const moneydel = (await Currencies.getData(mention)).money;
-        api.sendMessage("Hết sạch tiền nha con ^3^", event.threadID, async () => await Currencies.decreaseMoney(mention, parseInt(moneydel)));
+        api.sendMessage("cút", event.threadID, async () => await Currencies.decreaseMoney(mention, parseInt(moneydel)));
         }
 }

@@ -1,11 +1,11 @@
 module.exports.config = {
-  name: "lqmb",
+  name: "skinlqmb",
   version: "2.0.5",
   hasPermssion: 0,
   credits: "HĐGN",
   description: "Random Ảnh Skin Liên Quân",
   commandCategory: "LIÊN QUÂN MOBILE",
-  usages: "lqmb",
+  usages: "",
   cooldowns: 0,
   dependencies: {
     "request":"",

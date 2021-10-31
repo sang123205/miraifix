@@ -2,8 +2,8 @@ module.exports.config = {
 	name: "askme",
 	version: "1.1.2",
 	hasPermssion: 0,
-	credits: "HelyT (cthanh add)",
-	description: "giống help nhưng có thêm auto rep :3",
+	credits: "HelyT",
+	description: "Help giống Spermbot :3",
 	commandCategory: "group",
 	usages: "[lệnh]",
 	cooldowns: 1,
@@ -37,9 +37,9 @@ const command = commands.get((args[0] || "").toLowerCase());
 const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
 if (!command) {
 const command = commands.values();
-var tl = ["Ng chăn Pò là trdyc_thanh","Con bot này thông minh hơn bạn","bạn có biết","tôi không có khả năng hiểu con gái","🐳 Pò có thể giúp đỡ bạn trong việc học 🐳\n🐬wiki : tra thông tin trên wiki \n🐬math : giải toán \n🐬vnex : news trên vnex \n🐬congthuc toan : full công thức toán \n🐬 còn nữa .....","spam lệnh sẽ ban bạn khỏi người dùng bot","đừng để tôi cáu nhé!","...","bạn đã làm tôi cáu😡","tôi yêu bạn","bạn có yêu tôi không ?","cái gì chưa biết chỉ cần biết là được","con chuột bị ốm uống thuốc chuột thì tại sao con chuột lại chết ?","chảy máu cam nhưng sao màu máu là màu đỏ ?","đây là sản phẩm của Thành 🐬 ","Tôi là người yêu bé nhỏ của TrDyC_Thành","Ngày 28 tháng 9 là ngày sinh nhật của daddy","Con bot này giống AI nhưng thật chất chỉ là những đoạn code lập trình sẵn","Đây là một bản hoàn chỉnh hơn của Mirai V1.","Đây không phải là bot C3C hay KB2A.","280924 là một con số tuyệt vời.","Đây là một lệnh vô dụng","Đánh con lô 73 đi bạn","Đã từng có 600+ code ở phiên bản đầu tiên của Bot","Ngôn ngữ lập trình của BOT là JAVASCRIPT","Tỉ lệ bạn gặp tai nạn trên đường đi mua vé số còn cao hơn tỉ lệ bạn trúng vé số","Đây là con bot tự viết code cho chính nó","7749 là con số đẹp cho tình yêu","bạn có yêu tôi không ?","bạn rất ngu"];
+var tl = ["Chủ bot là Hoàng Hải Long deeptry ?","Con bot này thông minh hơn bạn","bạn có biết","tôi không có khả năng hiểu con gái","con bot này giúp bạn hỗ trợ trong việc học?","spam bot tôi sẽ ban bạn khỏi người dùng bot","đừng để tôi cáu nhé!","việc bạn đang làm là vô nghĩa","bạn đã làm tôi cáu😡","tôi yêu bạn vai lon","bạn có yêu tôi không ?","cái gì chưa biết chỉ cần biết là được","con chuột bị ốm uống thuốc chuột thì tại sao con chuột lại chết ?","chảy máu cam nhưng sao màu máu là màu đỏ ?","đây chỉ là sản phẩm fake spermbot?","Tôi là người yêu bé nhỏ của Long","Ngày 16 tháng 06 là ngày sinh nhật của Longdz #LTD ?","Con bot này giống Spermbot nhưng thật chất chỉ là mod lại ?","Đây là một bản hoàn chỉnh hơn của Mirai V1.","Đây không phải là bot C3C hay KB2A.","228922 là một con số tuyệt vời.","Đây là một lệnh vô dụng","177013 là một con số tuyệt vời","Đã từng có 600+ code JAV ở phiên bản đầu tiên của SpermBot","Ngôn ngữ của Longdeeptry là ngôn ngữ của chúa","Nếu bạn gặp 1 người có tên là LTD hãy tránh xa người đó càng nhiều càng tốt. Nếu không cả gia phả nhà người đó sẽ ám bạn suốt đời, con cháu bạn sẽ bị ám bởi cái tên LTD","Đây là con bot tự viết code cho chính nó","7749 là con số đẹp cho tình yêu","bạn có yêu tôi không ?","bạn rất ngu"];
 var tle = tl[Math.floor(Math.random() * tl.length)];
-var lon = `[🐳 Bạn có biết 🐳]: ${tle}.`;
+var lon = `[Bạn có biết?]: ${tle}.`;
 return api.sendMessage(lon, event.threadID, event.messageID);
 }
 const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;

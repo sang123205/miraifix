@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "tw",
 	version: "1.0.0",
-	hasPermssion: 1,
+	hasPermssion: 0,
 	credits: "Trung Kien",
 	description: "Random ảnh tw :))",
 	commandCategory: "random-img",

@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "unsend",
+	name: "gỡ tin nhắn bot",
 	version: "1.0.1",
 	hasPermssion: 0,
 	credits: "Mirai Team",

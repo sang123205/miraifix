@@ -1,12 +1,12 @@
 module.exports.config = {
-  name: "vnex",
-  version: "1.0.2",
-  hasPermssion: 0,
-  credits: "HungCho",
-  description: "Báo tin tức vnex !",
-  commandCategory: "news",
-  usages: "d",
-  cooldowns: 0,
+	name: "vnex",
+	version: "1.0.2",
+	hasPermssion: 0,
+	credits: "HungCho",
+	description: "Báo tin tức vnex !",
+	commandCategory: "news",
+	usages: "d",
+	cooldowns: 0,
 dependencies: {"axios": "","cheerio": ""}
 };
 

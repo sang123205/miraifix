@@ -5,12 +5,12 @@ module.exports.config = {
 	credits: "Mirai Team",
 	description: "Random một con số bất kì trong một khoảng",
 	commandCategory: "other",
-	cooldowns: 5,
+	cooldowns: 5
 };
 
 module.exports.languages = {
 	"vi": {
-		"returnResultDefault": "Pò nghĩ %1 có lẽ là một con số may mắn <<thinking>>",
+		"returnResultDefault": "%1 có lẽ là một con số may mắn :thinking:",
 		"invalidMax": "Khoảng giới hạn số quay không hợp lệ",
 		"invalidInput": "Khoảng bắt đầu hoặc khoảng kết thúc không phải là một con số hợp lệ!",
 		"returnResult": "%1 có lẽ là một con số may mắn trong khoảng từ %2 đến %3 :thinking:"

@@ -1,22 +1,24 @@
 module.exports.config = {
-  name: "tagadmin",
-  version: "1.0.0-beta-fixbyDungUwU",
-  hasPermssion: 0,
-  credits: "ZyrosGenZ-fixbyDungUwU",
-  description: "Bot sẽ rep ng tag admin hoặc rep ng tagbot ",
-  commandCategory: "Other",
-  usages: "tagadmin",
-  cooldowns: 1,
+name: "tagadmin",
+	version: "1.0.0",
+	hasPermssion: 0,
+	credits: "JustGon",//Giữ Credit tôn trọng thằng làm ra
+	description: "tagadmin",
+	commandCategory: "noprefix",
+	usages: "noprefix",
+	cooldowns: 5,
 };
 module.exports.handleEvent = function({ api, event }) {
-  if (event.senderID !== "none") {//id bot
-    var aid = ["@Công Thành","100048760441123"];//id admin(s)
-    for (const id of aid) {
-    if ( Object.keys(event.mentions) == id) {
-      var msg = ["adm tắt thông báo mess rồi 🥲🤣","Tag gì z 🥺","đừng tag , ổng ngủ rồi ?!","tý ổng dậy ổng rep, tag cũng v à 🙂"];//(các) câu bot rep
-      return api.sendMessage({body: msg[Math.floor(Math.random()*msg.length)]}, event.threadID, event.messageID);
-    }
-    }}
-};
-module.exports.run = async function({}) {
-  }
+        var reply = ["tag thằng chủ tao ăn l à ?", "tag làm gì ?"];
+        var replyrand = reply[Math.floor(Math.random() * reply.length)];
+        var mention = Object.keys(event.mentions)[0]
+	if (mention == global.config.ADMINBOT) {
+		var msg = {
+				body: replyrand
+			}
+			return api.sendMessage(msg, event.threadID, event.messageID);
+		}
+	}
+module.exports.run = function({ api, event, client }) {
+
+}

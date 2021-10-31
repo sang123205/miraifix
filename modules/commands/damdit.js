@@ -1,49 +1,47 @@
 module.exports.config = {
     name: "damdit",
-    version: "1.0.0",
+    version: "2.2.2",
     hasPermssion: 0,
-    credits: "VanHung",
+    credits: "CHIP2502",
     description: "",
-    commandCategory: "Games",
-    usages: "damdit [tag]",
+    commandCategory: "hình ảnh",
+    usages: "[@tag]",
+    cooldowns: 5,
     dependencies: {
+        "axios": "",
+        "fs-extra": "",
         "path": "",
-     "jimp": ""
- },
-    cooldowns: 5
+        "jimp": ""
+    }
 };
 
-module.exports.onLoad = () => {
-    const fs = require("fs-extra");
-    const request = require("request");
+module.exports.onLoad = async() => {
+    const { resolve } = global.nodemodule["path"];
+    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+    const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "damdit.png")) request("https://i.imgur.com/tzVFSXp.jpg").pipe(fs.createWriteStream(dirMaterial + "damdit.png"));
+    const path = resolve(__dirname, 'cache/canvas', 'damdit.png');
+    if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
+    if (!existsSync(path)) await downloadFile("https://i.imgur.com/tzVFSXp.jpg", path);
 }
-
-async function makeImage({ one }) {    
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const path = require("path");
-    const jimp = require("jimp");
+async function makeImage({ one, two }) {    
+    const fs = global.nodemodule["fs-extra"];
+    const path = global.nodemodule["path"];
+    const axios = global.nodemodule["axios"];
+    const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
     let damdit_image = await jimp.read(__root + "/damdit.png");
-    let pathImg = __root + `/damdit_${one}.png`;
-    let avatarOne = __root + `/avt_${one}.png`;
-    
-    let getAvatarOne = (await axios.get(`https://4boxvn.com/api/avt?s=${one}`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
-    
-    
-    let circleOne = await jimp.read(await circle(avatarOne));
-    damdit_image.composite(circleOne.resize(240, 240), 171, 187);
+    let pathImg = __root + `/damdit_${one}_${two}.png`;
+    let avatarOne = (await axios.get(`https://meewmeew.info/avatar/${one}`)).data;    
+    let avatarTwo = (await axios.get(`https://meewmeew.info/avatar/${two}`)).data;    
+    let circleOne = await jimp.read(await circle(Buffer.from(avatarOne, 'utf-8')));
+    let circleTwo = await jimp.read(await circle(Buffer.from(avatarTwo, 'utf-8')));
+    damdit_image.composite(circleOne.resize(240, 240), 171, 187).composite(circleTwo.resize(0, 0), 0, 0);
     
     let raw = await damdit_image.getBufferAsync("image/png");
     
     fs.writeFileSync(pathImg, raw);
-    fs.unlinkSync(avatarOne);
-    
     return pathImg;
 }
 async function circle(image) {
@@ -53,13 +51,13 @@ async function circle(image) {
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function ({ event, api, args, client }) {
-    const fs = require("fs-extra");
-    let { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions);
-    if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
+module.exports.run = async function ({ event, api, args }) {
+    const fs = global.nodemodule["fs-extra"];
+    const { threadID, messageID, senderID } = event;
+    const mention = Object.keys(event.mentions);
+    if (!mention[0]) return api.sendMessage("Vui lòng tag 1 người.", threadID, messageID);
     else {
-        var one = mention[0];
-        return makeImage({ one }).then(path => api.sendMessage({ body: "Sướng quá ah ah ah...\n" + event.mentions[mention[0]].replace(/@/g, "") +"\nĐã bị hấp diêm 😟😟", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        var one = senderID, two = mention[0];
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Sướng quá ah ah ah...", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }

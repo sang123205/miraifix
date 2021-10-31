@@ -1,11 +1,11 @@
 module.exports.config = {
-  name: "cuteimg",
+  name: "pantiesclose",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Siêu Đáng Yêu",
   description: "Projec M4a.",
   commandCategory: "Hình Ảnh",
-  usages: "cuteimg",
+  usages: "panclose",
   cooldowns: 3,
   dependencies: {
     "request":"",

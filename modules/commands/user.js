@@ -5,8 +5,8 @@ module.exports.config = {
 	credits: "Mirai Team",
 	description: "Cấm hoặc gỡ cấm người dùng",
 	commandCategory: "system",
-	usages: "user [unban/ban/search] [ID or text]",
-	cooldowns: 5,
+	usages: "[unban/ban/search] [ID or text]",
+	cooldowns: 5
 };
 
 module.exports.languages = {

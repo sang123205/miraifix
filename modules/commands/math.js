@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "Mirai Team",
 	description: "Làm toán",
 	commandCategory: "study",
-	usages: "math [key]",
+	usages: "math 1 + 2",
 	cooldowns: 5,
 	dependencies: {
 		"axios": "",

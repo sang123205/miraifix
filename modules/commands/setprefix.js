@@ -5,8 +5,8 @@ module.exports.config = {
 	credits: "Mirai Team",
 	description: "Đặt lại prefix của nhóm",
 	commandCategory: "config",
-	usages: "set[prefix/reset]",
-	cooldowns: 5,
+	usages: "[prefix/reset]",
+	cooldowns: 5
 };
 
 module.exports.languages ={

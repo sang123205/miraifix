@@ -5,12 +5,12 @@
 
 
 module.exports.config = {
-    name: "fbuser",
+    name: "locmemmdie",
     version: "2.0.0",
     hasPermssion: 1,
     credits: "ProCoderMew",
     description: "L\u1ECDc ng\u01B0\u1EDDi d\xF9ng Facebook",
-    commandCategory: "Box-chat",
+    commandCategory: "lọc box",
     usages: "",
     cooldowns: 300
 }

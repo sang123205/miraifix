@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "hentaigif",
 	version: "1.0.1",
-	hasPermssion: 1,
+	hasPermssion: 0,
 	credits: "VDT&NTH",
 	description: "hentaigif",
 	commandCategory: "nsfw",

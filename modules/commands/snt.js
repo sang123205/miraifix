@@ -1,11 +1,11 @@
 module.exports.config = {
-    name: "snt",
+    name: "songuyento",
     version: "1.0.1",
     hasPermssion: 0,
     credits: "Leo",
     description: "Kiểm tra số nguyên tố",
     commandCategory: "study",
-    usages:"snt [num]",
+    usages:"[num]",
     cooldowns: 5,
 };
 

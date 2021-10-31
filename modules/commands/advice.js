@@ -1,4 +1,3 @@
-  
 module.exports.config = {
 	name: "advice",
 	version: "1.0.1",

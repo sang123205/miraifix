@@ -216,10 +216,10 @@ var min = Math.floor(Math.random() * 2);
   var data = await Currencies.getData(event.senderID);
   var exp =  data.exp;
   var money = data.money
-      if(money < 2000) api.sendMessage("Bạn cần 2000 đô để xem ảnh nha ?",event.threadID,event.messageID)
+      if(money < 100) api.sendMessage("Bạn cần 100 đô để xem ảnh ?",event.threadID,event.messageID)
           else {
-   Currencies.setData(event.senderID, options = {money: money - 2000})
-   var callback = () => api.sendMessage({body:`Ảnh Ganyu genshi\nSố Ảnh: ${link.length}\n-2000 đô rùi nhen !`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
+   Currencies.setData(event.senderID, options = {money: money - 10})
+   var callback = () => api.sendMessage({body:`Ảnh Ganyu genshi\nSố Ảnh: ${link.length}\n-100 đô !`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
      }
    };

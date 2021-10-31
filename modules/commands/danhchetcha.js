@@ -1,4 +1,4 @@
-	const fs = require("fs");
+const fs = require("fs");
 module.exports.config = {
 name: "Đánh chết cha",
 	version: "1.0.1",
@@ -11,7 +11,7 @@ name: "Đánh chết cha",
 };
 module.exports.handleEvent = function({ api, event }) {
 	var { threadID, messageID } = event;
-	if (event.body.indexOf("đánh chết")==0 || (event.body.indexOf("Đánh chết")==0)) {
+	if (event.body.indexOf("đánh chết cha")==0 || (event.body.indexOf("đánh chết mẹ")==0)) {
 		var msg = {
 				body: "",
 				attachment: fs.createReadStream(__dirname + `/cache/danhchetcha.mp4`)

@@ -2,15 +2,15 @@ module.exports.config = {
   name: "callad",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "NTKhang",
+  credits: "NTKhang fix by Jukie",
   description: "thông báo lỗi của bot đến admin hoặc góp ý",
-  commandCategory: "other",
-  usages: "callad [lỗi gặp phải hoặc ý kiến]",
+  commandCategory: "Tiện ích",
+  usages: "[lỗi gặp phải hoặc ý kiến]",
   cooldowns: 5,
 };
 
-module.exports.handleReply = async function({ api, args, event, handleReply}) {
-  var name = ((await api.getUserInfo(event.senderID))[event.senderID]).name; 
+module.exports.handleReply = async function({ api, args, event, handleReply, Users}) {
+  var name = (await Users.getData(event.senderID)).name 
  switch(handleReply.type) {
    case "reply": {
      var idad = global.config.ADMINBOT;
@@ -27,7 +27,7 @@ module.exports.handleReply = async function({ api, args, event, handleReply}) {
      }
    break;}
     case "calladmin": {
-      api.sendMessage({ body: `📌Phản hồi từ admin ${name} đến bạn:\n--------\n${event.body}\n--------\n»💬Phản hồi tin nhắn này để tiếp tục gửi báo cáo về admin`, mentions: [{tag: name, id : event.senderID}]}, handleReply.id, (e, data) => global.client.handleReply.push({
+      api.sendMessage({ body: `⚡Phản hồi từ admin ${name} đến bạn:\n--------\n${event.body}\n--------\n»💬Phản hồi tin nhắn này để tiếp tục gửi báo cáo về admin`, mentions: [{tag: name, id : event.senderID}]}, handleReply.id, (e, data) => global.client.handleReply.push({
   name: this.config.name,
   author: event.senderID,
   messageID: data.messageID,
@@ -39,17 +39,17 @@ module.exports.handleReply = async function({ api, args, event, handleReply}) {
   
 };
 
-module.exports.run = async function({ api, event, args }) {
+module.exports.run = async function({ api, event, args, Users }) {
   if (!args[0])
     return api.sendMessage(
       "Bạn chưa nhập nội dung cần báo cáo",
       event.threadID,
       event.messageID
     );
-  var data = await api.getUserInfo(event.senderID);
-  var name = data[event.senderID].name;
+  //var data = await api.getUserInfo(event.senderID); 
+  var name = (await Users.getData(event.senderID)).name;
   var idbox = event.threadID;
-  var url = data[event.senderID].profileUrl;
+ // const url = (api.getCurrentUserID(event.senderID));
   var datathread = await api.getThreadInfo(event.threadID);
   var namethread = datathread.name;
 
@@ -62,9 +62,9 @@ module.exports.run = async function({ api, event, args }) {
     () => {
     var idad = global.config.ADMINBOT;
     for(let ad of idad) {
-        api.sendMessage(`👤Báo cáo từ: ${name}\n${url}\n👨‍👩‍👧‍👧Box: ${namethread}\nID box: ${idbox}\n---------------------------------------------\n⚠️Lỗi: ${args.join(
+        api.sendMessage(`⚡Báo cáo từ: ${name}\n⚡Box: ${namethread}\n⚡ID box: ${idbox}\n----------------\n⚠️Lỗi: ${args.join(
             " "
-          )}\n--------------------------------------------- \nTime: ${gio}`,
+          )}\n----------------\n⚡Time: ${gio}`,
           ad, (error, info) =>
             global.client.handleReply.push({
               name: this.config.name,

@@ -5,7 +5,7 @@ module.exports.config = {
   credits: "Hungcatmoi",
   description: "Ôm người bạn tag",
   commandCategory: "general",
-  usages: "hug [tag người bạn cần ôm]",
+  usages: "[tag người bạn cần ôm]",
   cooldowns: 5,
   dependencies: {
     "request":"",

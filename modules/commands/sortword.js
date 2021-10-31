@@ -8,7 +8,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "S\u1EAFp x\u1EBFp l\u1EA1i 1 t\u1EEB ti\u1EBFng anh b\u1ECB x\xE1o tr\u1ED9n",
-    commandCategory: "game-sp",
+    commandCategory: "game",
     usages: "",
     cooldowns: 5,
     dependencies: {

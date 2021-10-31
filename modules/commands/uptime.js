@@ -15,24 +15,19 @@ function byte2mb(bytes) {
 }
 module.exports.run = async ({ api, event }) => {
 	const axios = require('axios');
-	const fetch = global.nodemodule["node-fetch"];
 	const request = require('request');
-	const res = await axios.get(`https://le31.glitch.me/poem`);
-	var poem =       res.data.data;
 	const fs = require("fs");
-	const moment = require("moment-timezone");
-    var gio = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss || D/MM/YYYY");
 const time = process.uptime(),
 		hours = Math.floor(time / (60 * 60)),
 		minutes = Math.floor((time % (60 * 60)) / 60),
 		seconds = Math.floor(time % 60);
 	const pidusage = await global.nodemodule["pidusage"](process.pid);
 	const timeStart = Date.now();
-	axios.get('https://anime.ttktrungkien.repl.co/').then(res => {
+	axios.get('https://anime.ttktrungkien.repl.co').then(res => {
     let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
 	let callback = function () {
 					api.sendMessage({
-                                                body: `🚬Bây giờ là: ${gio}!\n🐶Thời gian hoạt động : ${hours} giờ ${minutes} phút ${seconds} giây.\n\n📝Users: ${global.data.allUserID.length}\n📈 Threads: ${global.data.allThreadID.length}\n🔍 Cpu: ${pidusage.cpu.toFixed(1)}\n⚠️ Ram: ${byte2mb(pidusage.memory)}\n❗ Ping: ${Date.now() - timeStart}\n💬Thính : ${poem}`,
+                                                body: `🤖Bot của Mạnh Khoa đã hoạt động được ${hours} giờ ${minutes} phút ${seconds} giây <3.\n\n📝Tổng người dùng: ${global.data.allUserID.length}\n📈 Tổng nhóm: ${global.data.allThreadID.length}\n🔍 Cpu đang sử dụng: ${pidusage.cpu.toFixed(1)}\n⚠️ Ram đang sử dụng: ${byte2mb(pidusage.memory)}\n❗ Ping: ${Date.now() - timeStart}`,
 						attachment: fs.createReadStream(__dirname + `/cache/anh.${ext}`)
 					}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/anh.${ext}`), event.messageID);
 				};

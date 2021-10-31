@@ -2,10 +2,10 @@ module.exports.config = {
 	name: "mark",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "HĐGN",
-	description: "Viết chữ lên bảng ¯\_(ツ)_/¯",
+	credits: "MewMew mod By hungdz30cm",
+	description: "Comment trên bảng ( ͡° ͜ʖ ͡°)",
 	commandCategory: "edit-img",
-	usages: "mark [text]",
+	usages: "mark[text]",
 	cooldowns: 10,
 	dependencies: {
 		"canvas":"",
@@ -48,10 +48,10 @@ module.exports.run = async function({ api, event, args }) {
 	const { loadImage, createCanvas } = require("canvas");
 	const fs = global.nodemodule["fs-extra"];
 	const axios = global.nodemodule["axios"];
-	let pathImg = __dirname + '/cache/markzuckerberg.png';
+	let pathImg = __dirname + '/cache/mark.png';
 	var text = args.join(" ");
-	if (!text) return api.sendMessage("Nhập nội dung cần viết trên bảng", threadID, messageID);
-	let getPorn = (await axios.get(`https://i.imgur.com/9aaL2AP.png`, { responseType: 'arraybuffer' })).data;
+	if (!text) return api.sendMessage("Nhập nội dung comment trên bảng", threadID, messageID);
+	let getPorn = (await axios.get(`https://imgur.com/undefined.png`, { responseType: 'arraybuffer' })).data;
 	fs.writeFileSync(pathImg, Buffer.from(getPorn, 'utf-8'));
 	let baseImage = await loadImage(pathImg);
 	let canvas = createCanvas(baseImage.width, baseImage.height);
@@ -65,8 +65,8 @@ module.exports.run = async function({ api, event, args }) {
 		fontSize--;
 		ctx.font = `400 ${fontSize}px Arial, sans-serif`;
 	}
-	const lines = await this.wrapText(ctx, text, 1160);
-	ctx.fillText(lines.join('\n'), 100,550);//comment
+		const lines = await this.wrapText(ctx, text, 1160);
+	ctx.fillText(lines.join('\n'), 60,668);//comment
 	ctx.beginPath();
 	const imageBuffer = canvas.toBuffer();
 	fs.writeFileSync(pathImg, imageBuffer);

@@ -10,7 +10,7 @@ module.exports.config = {
     credits: "ProCoderMew",
     description: "Chơi nối từ với bot hoặc thành viên trong nhóm",
     commandCategory: "game",
-    usages: "linkword",
+    usages: "",
     cooldowns: 5,
     dependencies: {
         "axios": ""
@@ -32,7 +32,7 @@ module.exports.handleEvent = async function({ api, event }) {
         if (content && content.split(" ").length == 2) {
             var data = (await axios.get("https://meewmeew.info/word/linkword?ask=" + encodeURIComponent(content) + "&apikey=" + APIKEY)).data;
             if (data.success == true) {
-                if (data.data == "thua rùi kìa ahihi!") {
+                if (data.data == "Bạn đã thua!") {
                     global.procodermew.linkword.delete(threadID);
                     return api.sendMessage(data.data, threadID, messageID);
                 } else return api.sendMessage(data.data, threadID, messageID);
@@ -44,9 +44,9 @@ module.exports.run = function({ api, event }) {
     const { threadID, messageID } = event;
     if (!global.procodermew.linkword.has(threadID)) {
         global.procodermew.linkword.set(threadID);
-        return api.sendMessage("chơi nối từ đi nào", threadID, messageID);
+        return api.sendMessage("Đã bật linkword", threadID, messageID);
     } else {
         global.procodermew.linkword.delete(threadID);
-        return api.sendMessage("End game nha", threadID, messageID);
+        return api.sendMessage("Đã tắt linkword", threadID, messageID);
     }
 }

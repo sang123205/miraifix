@@ -19,12 +19,12 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
 	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "tự rời" : "bị quản trị viên đá";
 	const path = join(__dirname, "cache", "leaveGif");
-	const gifPath = join(path, `${threadID}.gif`);
+	const gifPath = join(path, `57261090_448218072596939_2786232064729415680_n.gif`);
 	var msg, formPush
 
 	if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-	(typeof data.customLeave == "undefined") ? msg = "vì hong có ng iu nên {name} Đã {type} khỏi nhóm" : msg = data.customLeave;
+	(typeof data.customLeave == "undefined") ? msg = "𝑁𝑔𝑢̛𝑜̛̀𝑖 𝑑𝑢̀𝑛𝑔 {name} 𝑉𝑖̀ 𝑘ℎ𝑜̂𝑛𝑔 𝑡𝑎́𝑛 đ𝑢̛𝑜̛̣𝑐 𝑒𝑚 𝑛𝑎̀𝑜 𝑛𝑒̂𝑛 đ𝑎̃ {type} 𝑘ℎ𝑜̉𝑖 𝑛ℎ𝑜́𝑚 🤫" : msg = data.customLeave;
 	msg = msg.replace(/\{name}/g, name).replace(/\{type}/g, type);
 
 	if (existsSync(gifPath)) formPush = { body: msg, attachment: createReadStream(gifPath) }

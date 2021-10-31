@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "admin",
-	version: "1.0.5",
-	hasPermssion: 0,
-	credits: "Mirai Team",
-	description: "Quản lý admin bot",
-	commandCategory: "config",
-	usages: "[list/add/remove] [userID]",
+    name: "admin",
+    version: "1.0.5",
+    hasPermssion: 0,
+    credits: "Mirai Team",
+    description: "Quản lý admin bot",
+    commandCategory: "config",
+    usages: "[list/add/remove] [userID]",
     cooldowns: 5,
     dependencies: {
         "fs-extra": ""
@@ -14,22 +14,24 @@ module.exports.config = {
 
 module.exports.languages = {
     "vi": {
-        "listAdmin": '[Admin] Danh sách toàn bộ người điều hành bot: \n\n%1',
-        "notHavePermssion": '[Admin] Bạn không đủ quyền hạn để có thể sử dụng chức năng "%1"',
+        "listAdmin": '[Admin] Danh sách toàn bộ người điều hành bot:\n%1',
+        "notHavePermssion": 'quyền lồn biên giới.',
         "addedNewAdmin": '[Admin] Đã thêm %1 người dùng trở thành người điều hành bot:\n\n%2',
-        "removedAdmin": '[Admin] Đã gỡ bỏ %1 người điều hành bot:\n\n%2'
+        "removedAdmin": '[Admin] Đã gỡ bỏ %1 người điều hành bot:\n\n%2',
+        "botnotadd": "Bot không có quyền để thêm người điều hành."
     },
     "en": {
         "listAdmin": '[Admin] Admin list: \n\n%1',
         "notHavePermssion": '[Admin] You have no permission to use "%1"',
         "addedNewAdmin": '[Admin] Added %1 Admin :\n\n%2',
-        "removedAdmin": '[Admin] Remove %1 Admin:\n\n%2'
+        "removedAdmin": '[Admin] Remove %1 Admin:\n\n%2',
+        "botnotadd": "The bot does not have permission to add moderators."
     }
 }
 
 module.exports.run = async function ({ api, event, args, Users, permssion, getText }) {
     const content = args.slice(1, args.length);
-    const { threadID, messageID, mentions } = event;
+    const { threadID, messageID, mentions, senderID } = event;
     const { configPath } = global.client;
     const { ADMINBOT } = global.config;
     const { userName } = global.data;
@@ -45,11 +47,12 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
         case "-a": {
             const listAdmin = ADMINBOT || config.ADMINBOT || [];
             var msg = [];
-
+            var dem = 0;
             for (const idAdmin of listAdmin) {
                 if (parseInt(idAdmin)) {
+                    dem += 1;
                     const name = await Users.getNameUser(idAdmin);
-                    msg.push(`- ${name} -\n(https://facebook.com/${idAdmin})`);
+                    msg.push(`${dem}/ ${name} (https://facebook.com/${idAdmin})`);
                 }
             }
 
@@ -57,6 +60,8 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
         }
 
         case "add": {
+            var idbot = api.getCurrentUserID();
+            if (senderID == idbot) return api.sendMessage(getText("botnotadd"), threadID, messageID);
             if (permssion != 2) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
             if (mention.length != 0 && isNaN(content[0])) {
                 var listAdd = [];

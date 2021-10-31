@@ -1,23 +1,22 @@
-﻿const fs = require("fs");
+const fs = require("fs");
 module.exports.config = {
-	name: "ảo",
-    version: "1.0.1",
+name: "Aỏ thật đấy",
+	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "VanHung - Fixed by LTD", 
-	description: "no prefix",
+	credits: "dungkon",
+	description: "Aỏ thật đấy",
 	commandCategory: "Không cần dấu lệnh",
-	usages: "Ảo cái lồn chứ ảo suốt ngày ảo ảo ",
-    cooldowns: 5, 
+	usages: "noprefix",
+	cooldowns: 5,
 };
-
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
+module.exports.handleEvent = function({ api, event }) {
 	var { threadID, messageID } = event;
-	if (event.body.indexOf("ảo")==0 || (event.body.indexOf("Ảo")==0)) {
+	if (event.body.indexOf("ảo thật đấy")==0 || (event.body.indexOf("ảo chưa")==0)) {
 		var msg = {
-				body: "Djtconmemay ảo con mẹ mày suốt ngày ảo 🙃",
-				attachment: fs.createReadStream(__dirname + `/noprefix/aothatday.mp3`)
+				body: "địt mẹ mày ảo thật đấy",
+				attachment: fs.createReadStream(__dirname + `/noprefix/aothatday.mp4`)
 			}
-			api.sendMessage(msg, threadID, messageID);
+			return api.sendMessage(msg, threadID, messageID);
 		}
 	}
 	module.exports.run = function({ api, event, client, __GLOBAL }) {

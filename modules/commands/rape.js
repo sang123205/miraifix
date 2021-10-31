@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "rape",
     version: "1.0.0",
-    hasPermssion: 1,
+    hasPermssion: 0,
     credits: "VanHung",
     description: "",
     commandCategory: "Games",

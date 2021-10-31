@@ -1,4 +1,4 @@
-﻿/**
+/**
 * @author ProCoderMew
 * @warn Do not edit code or edit credits
 */
@@ -9,7 +9,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Lấy text từ ảnh.",
-    commandCategory: "Khác",
+    commandCategory: "general",
     usages: "[lang] (xem tại findtext list)",
     cooldowns: 0,
     dependencies: {

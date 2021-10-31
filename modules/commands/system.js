@@ -44,35 +44,35 @@ module.exports.run = async function ({ api, event }) {
 
 		for (const singleDisk of diskInfo) {
 			disk.push(
-				`💜==== 「 DISK ${i++} 」 ====💜\n` +
-				"🦄Name: " + singleDisk.name + "\n" +
-				"🦄Type: " + singleDisk.interfaceType + "\n" + 
-				"🦄Size: " + byte2mb(singleDisk.size) + "\n" +
-				"🦄Temperature: " + singleDisk.temperature + "°C"
+				`==== 「 DISK ${i++} 」 ====\n` +
+				"Name: " + singleDisk.name + "\n" +
+				"Type: " + singleDisk.interfaceType + "\n" + 
+				"Size: " + byte2mb(singleDisk.size) + "\n" +
+				"Temperature: " + singleDisk.temperature + "°C"
 			)
 		}
 
 		return api.sendMessage(
-			"💜== System Info ==💜\n" +
-			"💜==「 CPU 」==💜\n" +
-			"🦄CPU Model: " + manufacturer + " " + brand + " " + speedMax + "GHz\n" +
-			"🦄Cores: " + cores + "\n" +
-			"🦄Threads: " + physicalCores + "\n" +
-			"🦄Temperature: " + mainTemp + "°C\n" +
-			"🦄Load: " + load.toFixed(1) + "%\n" +
-			"🦄Node usage: " + pidusage.cpu.toFixed(1) + "%\n" +
-			"💜==「 MEMORY 」==💜\n" +
-			"🦄Size: " + byte2mb(memInfo[0].size) +
-			"\n🦄Type: " + memInfo[0].type +
-			"\n🦄Total: " + byte2mb(totalMem) +
-			"\n🦄Available: " + byte2mb(availableMem) +
-			"\n🦄Node usage: " + byte2mb(pidusage.memory) + "\n" +
+			"====== System Info ======\n" +
+			"==== 「 CPU 」 ====\n" +
+			"CPU Model: " + manufacturer + " " + brand + " " + speedMax + "GHz\n" +
+			"Cores: " + cores + "\n" +
+			"Threads: " + physicalCores + "\n" +
+			"Temperature: " + mainTemp + "°C\n" +
+			"Load: " + load.toFixed(1) + "%\n" +
+			"Node usage: " + pidusage.cpu.toFixed(1) + "%\n" +
+			"==== 「 MEMORY 」 ====\n" +
+			"Size: " + byte2mb(memInfo[0].size) +
+			"\nType: " + memInfo[0].type +
+			"\nTotal: " + byte2mb(totalMem) +
+			"\nAvailable: " + byte2mb(availableMem) +
+			"\nNode usage: " + byte2mb(pidusage.memory) + "\n" +
 			disk.join("\n") + "\n" +
-			"💜==「 OS 」==💜\n" +
-			"🦄Platform: " + OSPlatform +
-			"\n🦄Build: " + OSBuild +
-			"\n🦄Uptime: " + hours + ":" + minutes + ":" + seconds +
-			"\n🦄Ping: " + (Date.now() - timeStart) + "ms",
+			"==== 「 OS 」 ====\n" +
+			"Platform: " + OSPlatform +
+			"\nBuild: " + OSBuild +
+			"\nUptime: " + hours + ":" + minutes + ":" + seconds +
+			"\nPing: " + (Date.now() - timeStart) + "ms",
 			event.threadID, event.messageID
 		)
 	}

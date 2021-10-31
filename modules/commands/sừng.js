@@ -1,8 +1,8 @@
-﻿module.exports.config = {
+module.exports.config = {
  name: "sừng",
  version: "1.0.0",
  hasPermssion: 0,
- credits: "BuiChiThong",
+ credits: "JRT",
  description: "Cắm Sừng Một Người Bất Kỳ Mà Bạn Muốn",
  commandCategory: "game",
  usages: "camsung",

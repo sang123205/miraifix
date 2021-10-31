@@ -4,19 +4,18 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "DungUwU",
     description: "Công thức toán - vật lý trọn bộ",
-    commandCategory: "general",
+    commandCategory: "study",
     usages: "congthuc toan/vatly",
     cooldowns: 5,
-    dependencies: {
-        "request":"",
-        "fs-extra":""
-    }
+    dependencies: {"request": "", 
+                    "fs-extra": ""
+        }
 };
 
 
 module.exports.handleReply = async function({ api, event, handleReply, client }) {
-const request = global.nodemodule["request"];
-const { createWriteStream, createReadStream, unlinkSync } = global.nodemodule["fs-extra"];
+const { createWriteStream, createReadStream, unlinkSync } = require("fs-extra");
+const request = require("request");
 var link = "";
 var msg = "";
     switch(handleReply.type) {
@@ -110,7 +109,7 @@ var msg = "";
             if (isNaN(event.body)) return api.sendMessage("Lựa chọn của bạn không phải là một con số!", event.threadID, event.messageID);
             if (choose > 3 || choose < 1) return api.sendMessage("Lựa chọn của bạn không nằm trong danh sách", event.threadID, event.messageID);
             };
-            case "1": {
+            case "Lớp 10": {
             switch(event.body) {
                 case "1":/*chuong1*/ link = "https://i.imgur.com/vHFSC50.jpg"; msg = "động học chất điểm!"; break;
                 case "2":/*chuong2*/ link = "https://i.imgur.com/XvLwGoz.jpg"; msg = "động lực học chất điểm!"; break;
@@ -132,7 +131,7 @@ var msg = "";
             return request(encodeURI(link)).pipe(createWriteStream(__dirname + `/cache/ly.jpg`)).on("close", () =>api.sendMessage('Đang lấy dữ liệu...', event.threadID, event.messageID).then(api.sendMessage({body: `Công thức ${msg}`, attachment: createReadStream(__dirname + "/cache/ly.jpg")}, event.threadID, () => unlinkSync(__dirname + "/cache/ly.jpg"))));
             };
 
-        case "2": {
+        case "Lớp 11": {
             switch(event.body) {
                 case "1":/*chuong1*/ link = "https://i.imgur.com/S6lSsum.jpg"; msg = "điện tích - điện trường của bạn đây!"; break;
                 case "2":/*chuong2*/ link = "https://i.imgur.com/vgrUOSd.jpg"; msg = "dòng điện không đổi của bạn đây!"; break;
@@ -154,7 +153,7 @@ var msg = "";
             return request(encodeURI(link)).pipe(createWriteStream(__dirname + `/cache/ly.jpg`)).on("close", () =>api.sendMessage('Đang lấy dữ liệu...', event.threadID, event.messageID).then(api.sendMessage({body: `Công thức ${msg}`, attachment: createReadStream(__dirname + "/cache/ly.jpg")}, event.threadID, () => unlinkSync(__dirname + "/cache/ly.jpg"))));
             };
 
-        case "3": {
+        case "Lớp 12": {
             switch(event.body) {
                 case "1":/*chuong1*/ link = ""; msg = "dao động cơ của bạn đây!"; break;
                 case "2":/*chuong2*/ link = ""; msg = "sóng cơ của bạn đây!"; break;
@@ -184,7 +183,7 @@ module.exports.run = ({ event, api, args, client, utils }) => {
             return api.sendMessage(
                 "=== Công thức toán ===" +
                 "\n» Mời bạn nhập lựa chọn «" +
-                "\n1. Đạo hàm." +
+                "\n\n1. Đạo hàm." +
                 "\n2. Nguyên hàm." +
                 "\n3. Logarit." +
                 "\n4. Diện tích." +
@@ -194,7 +193,7 @@ module.exports.run = ({ event, api, args, client, utils }) => {
                 "\n8. Tọa độ trong không gian" +
                 "\n\n» Hãy reply tin nhắn và chọn theo số «"
             , event.threadID, (error, info) => {
-                global.client.handleReply.push({
+                client.handleReply.push({
                     name: this.config.name,
                     messageID: info.messageID,
                     author: event.senderID,
@@ -206,7 +205,7 @@ module.exports.run = ({ event, api, args, client, utils }) => {
             return api.sendMessage(
                 "=== Lớp ===" +
                 "\n» Mời bạn nhập lựa chọn «" +
-                "\n1. Lớp 10." +
+                "\n\n1. Lớp 10." +
                 "\n2. Lớp 11." +
                 "\n3. Lớp 12." + 
                 "\n\n» Hãy reply tin nhắn và chọn theo số «"

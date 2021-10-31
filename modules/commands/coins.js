@@ -1,68 +1,63 @@
 module.exports.config = {
-	name: "coins",
-	version: "1.0.3-hotfix2",
+	name: "setmoney",
+	version: "0.0.1",
 	hasPermssion: 2,
-	credits: "Dũng UwU & Thọ",
-	description: "Tăng giảm tiền",
+	credits: "loi",
+	description: "thay đổi số tiền của bản thân hoặc người được tag",
 	commandCategory: "Economy",
-	usages: "coins [args]",
-    cooldowns: 5,
-     info: [
-    {
-    	key: "inc",
-    	prompt: "tăng coins",
-    	type: 'admin',
-    	example: 'coins inc'
-    },
-    {
-    	key: "dec",
-    	prompt: "giảm coins",
-    	type: 'admin',
-    	example: 'coins dec'
-    }] 
+	usages: "setmoney [Tag]",
+	cooldowns: 5,
+	info: [
+		{
+			key: 'Tag',
+			prompt: 'Để trống hoặc tag một người nào đó, có thể tag nhiều người',
+			type: 'Văn Bản',
+			example: '@Mirai-chan'
+		}
+	]
 };
 
-module.exports.run = async ({ event, api, Currencies, args, utils }) => {
-	let { threadID, messageID, senderID } = event;
-	const coins = parseInt(args[2])
-	const userID = Object.keys(event.mentions)[0];
-	var nameL
-	switch(args[0]) {
-		case "inc": {
-		if (args[1] == 'me') return api.sendMessage({ body: `Đã thêm cho bản thân ${coins} coins`}, threadID, async () => {
-            await Currencies.increaseMoney(senderID, coins);}, messageID);
-        if(userID) nameL = event.mentions[userID].split(" ").length
-		return api.sendMessage({ body: 'Đã chuyển cho ' + event.mentions[userID].replace(/@/g, "") + ` ${args[1+ nameL]} coins`}, threadID, async () => {
-            await Currencies.increaseMoney(userID, parseInt(args[1+ nameL]));
-            }, messageID);
-       }
-			break;
-		case "dec": {
-		if (args[1] == 'me') {
-		let balance = (await Currencies.getData(userID)).money;
-		if(args[2] == "all") return api.sendMessage(`Bạn đã giảm toàn bộ tiền của bản thân`, threadID, async () => {
-            await Currencies.decreaseMoney(senderID, balance);}, messageID);
-		 if(!isNaN(args[2])){ 
-		 if(coins > balance) return api.sendMessage("Số coins bạn giảm lớn hơn số coins hiện có",threadID,messageID)
-	       	else return api.sendMessage(`Đã giảm ${coins} coins của bản thân`, threadID, async () => {
-            await Currencies.decreaseMoney(senderID, coins);}, messageID);
-            }
-         else return api.sendMessage("Vui lòng nhập số coins muốn giảm",threadID,messageID)
-        }
-	    else if(userID){
-	    nameL = event.mentions[userID].split(" ").length
-	    let balance = (await Currencies.getData(userID)).money;
-	    if(args[1+ nameL] == "all") return api.sendMessage(`Bạn đã giảm toàn bộ coins của ${event.mentions[userID].replace(/@/g, "")}`, threadID, async () => {
-            await Currencies.decreaseMoney(userID, balance);}, messageID);
-        
-	    api.sendMessage({ body: `Đã giảm ${args[1+ nameL]} coins của ` + event.mentions[userID].replace(/@/g, "")}, threadID, async () => {
-            await Currencies.decreaseMoney(userID, parseInt(args[1+nameL]));}, messageID);
-            }
-        else return api.sendMessage("Bạn muốn giảm coin của ai",threadID,messageID)
-        }
-			break;
-		default:
-		return utils.throwError("coins", threadID, messageID);
-		break;
+module.exports.run = async function({ api, event, args, Currencies, utils, Users}) {
+var mention = Object.keys(event.mentions)[0];
+    var prefix = ";"
+    var {body} = event;
+    			var content = body.slice(prefix.length + 9, body.length);
+			var sender = content.slice(0, content.lastIndexOf(" "));
+			var moneySet = content.substring(content.lastIndexOf(" ") + 1);
+    			if (args[0]=='me'){
+    			 return api.sendMessage(`Đã thay đổi số dư của bạn thành ${moneySet} đô`, event.threadID, () => Currencies.increaseMoney(event.senderID, parseInt(moneySet)), event.messageID)	
+			}
+			else if(args[0]=="del"){
+if (args[1] == 'me'){
+			var s = event.senderID;
+			const moneyme =(await Currencies.getData(event.senderID)).money;
+			api.sendMessage(`✅Đã xoá toàn bộ số tiền của bạn\n💸Số tiền xoá là ${moneyme}.`, event.threadID, async () => await Currencies.decreaseMoney(event.senderID, parseInt(moneyme)));
+		}	
+		else if (Object.keys(event.mentions).length == 1) {
+var mention = Object.keys(event.mentions)[0];
+		const moneydel = (await Currencies.getData(mention)).money;
+		api.sendMessage(`✅Đã xoá toàn bộ số tiền của ${event.mentions[mention].replace("@", "")}\n💸Số tiền xoá là ${moneydel}.`, event.threadID, async () => await Currencies.decreaseMoney(mention, parseInt(moneydel)));
 		}
+		
+		else return	api.sendMessage("sai cú pháp", event.threadID, event.messageID);
+		}
+			else if (Object.keys(event.mentions).length == 1) {
+			return api.sendMessage({
+				body: (`Đã thay đổi số dư của ${event.mentions[mention].replace("@", "")} thành ${moneySet} đô`),
+				mentions: [{
+					tag: event.mentions[mention].replace("@", ""),
+					id: mention
+				}]
+			}, event.threadID, async () => Currencies.increaseMoney(mention, parseInt(moneySet)), event.messageID)
+		}
+		else if(args[0]=="UID"){
+		var id = args[1];
+		var cut = args[2];
+		let nameeee = (await Users.getData(id)).name
+		   return api.sendMessage(`Đã thay đổi số dư của ${nameeee} thành ${cut} đô`, event.threadID, () => Currencies.increaseMoney(id, parseInt(cut)), event.messageID)	
+
+		}
+else {
+	api.sendMessage("sai cú pháp", event.threadID, event.messageID)
 	}
+}

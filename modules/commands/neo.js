@@ -1,4 +1,4 @@
-const request = global.nodemodule['request'];
+const request = require('request');
 
 module.exports.config = {
   name: "neo",
@@ -6,12 +6,12 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "BerVer",
   description: "Đếm số lượng vật thể gần trái đất",
-  commandCategory: "space",
+  commandCategory: "news",
   usages: "neo",
   cooldowns: 5,
   dependencies: {
-    "request": ""
-}
+    "request": "",
+  }
 };
 
 module.exports.run = function({

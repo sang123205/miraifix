@@ -1,6 +1,6 @@
 module.exports.config = {
 	name: "outbox",
-	version: "1.0.5",
+	version: "1.0.6",
 	hasPermssion: 2,
 	credits: "CatalizCS",
 	description: "Tự động outbox sau khoảng thời gian đã request!",
@@ -56,7 +56,7 @@ module.exports.handleReply = ({ event, api, handleReply }) => {
         }
 
         case "inputTime": {
-            const time = moment().utcOffset("+07:00");
+            const time = moment().tz("Asia/Ho_Chi_minh");
             const regex = /([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$/;
 
             if (!regex.test(event.body)) return api.sendMessage(`[OutBox] Format thời gian không chính xác!`, event.threadID, event.messageID);

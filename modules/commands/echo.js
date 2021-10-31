@@ -7,7 +7,7 @@ module.exports.config = {
   commandCategory: "general",
   usages: "echo [văn bản hoặc nội dung]",
   cooldowns: 5,
- 
+  dependencies: []
 };
 
 module.exports.run = function({
@@ -15,5 +15,5 @@ module.exports.run = function({
   event,
   args,
   client,
-  global
+  __GLOBAL
 }) {}

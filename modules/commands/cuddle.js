@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "VDT&NTH",
 	description: "cuddle",
-	commandCategory: "Random-img",
+	commandCategory: "Anime V2",
 	usages: "cuddle [Text]",
 	cooldowns: 1,
 	

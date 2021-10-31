@@ -1,4 +1,4 @@
-module.exports.config = {
+ module.exports.config = {
 	name: "bans",
 	version: "2.0.0",
 	hasPermssion: 1,

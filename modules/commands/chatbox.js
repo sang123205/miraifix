@@ -1,13 +1,12 @@
 module.exports.config = {
-  name: "chatbox", 
-  version: "1.0.0", 
-  hasPermssion: 2,
-  credits: "Loi",
-  description: "Send tin đếb box hoặc người dùng ", 
-  commandCategory: "Admin",
-  usages: "chatbox",
-  cooldowns: 5, 
-  dependencies: "",
+	name: "chatbox",	version: "1.0.0", 
+	hasPermssion: 2,
+	credits: "Loi",
+	description: "Send tin đếb box hoặc người dùng ", 
+	commandCategory: "Admin",
+	usages: "chatbox",
+	cooldowns: 5, 
+	dependencies: "",
 
 };
 

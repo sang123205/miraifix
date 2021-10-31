@@ -4,7 +4,7 @@ module.exports.config = {
 	credits: "HungCho & Khánh Milo",
 	description: "",
 	usages: "",
-    commandCategory: "game-sp",
+    commandCategory: "economy",
 	cooldowns: 0,
 	dependencies: {
         "fs-extra" : ""
@@ -37,7 +37,7 @@ module.exports.handleReply = async function({ api, event, handleReply, Currencie
             switch (event.body) {
                 case "1": {
                     return api.sendMessage(
-                        "Bạn có thể reply số tiền cần đổi sang exp ! 10 exp = 1 exp."
+                        "Bạn có thể reply số tiền cần đổi sang exp ! 10 đô = 1 exp."
                   , event.threadID, (error, info) => {
                       global.client.handleReply.push({
                           name: this.config.name,

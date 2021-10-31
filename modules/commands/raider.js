@@ -1,11 +1,11 @@
 module.exports.config = {
-  name: "raiden",
+  name: "raiden shogun ",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Teri",
   description: "Random ảnh raiden shogun ",
   commandCategory: "random-img",
-  usages: "",
+  usages: "ball",
   cooldowns: 5,
   dependencies: {
     "request":"",

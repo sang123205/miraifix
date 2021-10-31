@@ -2,10 +2,10 @@ module.exports.config = {
 	name: "reminder",
 	version: "0.0.1-beta",
 	hasPermssion: 0,
-	credits: "Pò",
+	credits: "Mirai Team",
 	description: "Nhắc nhở bạn về việc gì đấy trong khoảng thời gian cố định",
-	commandCategory: "timer",
-	usages: "reminder [Time] [Text] ",
+	commandCategory: "Nhắc nhở",
+	usages: "[Time] [Text] ",
 	cooldowns: 5
 };
 

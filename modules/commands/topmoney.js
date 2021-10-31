@@ -60,3 +60,7 @@ module.exports.run = async({api,event,args,Currencies}) => {
 		}
 
 	}
+
+
+
+

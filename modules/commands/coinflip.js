@@ -1,30 +1,24 @@
 module.exports.config = {
-	name: "coinflip",
-	version: "0.0.1",
-	hasPermssion: 0,
-	credits: "Sunii",
-	description: "Tung đồng xu may rủi",
-	commandCategory: "games",
-	usages: "coinflip t 500",
-	cooldowns: 10
+	name: "coinflip", // Tên lệnh, được sử dụng trong việc gọi lệnh
+	version: "1.0.0", // phiên bản của module này
+	hasPermssion: 0, // Quyền hạn sử dụng, với 0 là toàn bộ thành viên, 1 là quản trị viên trở lên, 2 là admin/owner
+	credits: "BerVer", // Công nhận module sở hữu là ai
+	description: "Lật đồng xu", // Thông tin chi tiết về lệnh
+	commandCategory: "General", // Thuộc vào nhóm nào
+	usages: "coinflip", // Cách sử dụng lệnh
+	cooldowns: 5, // Thời gian một người có thể lặp lại lệnh
+	//Liệt kê các package module ở ngoài tại đây để khi load lệnh nó sẽ tự động cài!
+	// Info là phần chi tiết thêm của cách sử dụng lệnh
+	// Key: Từ khoá thuộc trong usages
+	// prompt: Chi tiết dữ liệu đầu vào của key
+	// type: Định dạng dữ liệu đầu vào của key
+	// example: Ví dụ ¯\_(ツ)_/¯ 
+	envConfig: {
+		//Đây là nơi bạn sẽ setup toàn bộ env của module, chẳng hạn APIKEY, ...
+	}
 };
-module.exports.run = async function({ api, event, args, Currencies, utils }) {
-        const { threadID, senderID, messageID } = event;
-        let money = (await Currencies.getData(event.senderID)).money;
-        var content = args.join(" ");
-        if (!content) return api.sendMessage("Bạn chưa nhập thông tin đặt cược!", threadID, messageID);
-        var xu = args[0];
-		var moneys = args[args.length -1];
-        if (isNaN(moneys) || moneys.indexOf("-") !== -1) return api.sendMessage("Số tiền đặt cược của bạn không phải là một con số, vui lòng xem lại cách sử dụng tại help cf", threadID, messageID);
-				if (!moneys || !xu) return api.sendMessage("Sai format", threadID, messageID);
-				if (moneys > money) return api.sendMessage("Số tiền của bạn không đủ", threadID, messageID);
-				if (moneys < 50) return api.sendMessage("Số tiền đặt cược của bạn quá nhỏ, tối thiểu là 50 coin", threadID, messageID);
-				var check = (num) => (num == 0) ? 'heads' : (num % 0 == 1 != 1) ? 'tails' : (num % 1 == 0 != 0);
-				let random = Math.random() < 0.5;
-                if (xu == "h" || xu == "heads") xu = 0;
-				else if (xu == "t" || xu == "tails") xu = 1;
-				else return api.sendMessage("Bạn chưa nhập thông tin cá cược!, <heads/tails>", threadID, messageID);
-       if (xu == 0 && check(random) == 'heads') api.sendMessage(`Bạn đã chọn heads, bạn đã thắng với số tiền: ${moneys * 2} RP`, threadID, () => Currencies.increaseMoney(senderID, parseInt(moneys * 2)), messageID);
-			 else if (xu == 1 && check(random) == 'tails') api.sendMessage(`Bạn đã chọn tails, bạn đã thắng với số tiền: ${moneys * 2} RP`, threadID, () => Currencies.increaseMoney(senderID, parseInt(moneys * 2)), messageID);
-			 else api.sendMessage(`Đồng xu ra mặt ${check(random)}\nBạn đã thua và bị trừ: ${moneys} RP`, threadID, () => Currencies.decreaseMoney(senderID, money), messageID)
-		};
+module.exports.run = function({ api, event, args, client, __GLOBAL }) {
+	//Làm cái gì ở đây tuỳ thuộc vào bạn ¯\_(ツ)_/¯ 
+return (Math.random() > 0.5) ? api.sendMessage("Mặt úp", event.threadID, event.messageID) : api.sendMessage("Mặt ngửa", event.threadID, event.messageID);
+
+}

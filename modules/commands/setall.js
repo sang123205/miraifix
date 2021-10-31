@@ -5,7 +5,7 @@ module.exports.config = {
  credits: "Khánh Milo",
  description: "Set biệt danh all tv",
  commandCategory: "other",
- usages: "setallname [name]",
+ usages: "[name]",
  cooldowns: 3
 };
 

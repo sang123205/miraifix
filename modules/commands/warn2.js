@@ -1,7 +1,7 @@
 ﻿module.exports.config = {
 	name: "warnkick",
 	version: "2.0.0",
-	hasPermssion: 2,
+	hasPermssion: 0,
 	credits: "NTKhang",
 	description: "Cảnh cáo thành viên  đủ 3 lần sẽ ban khỏi nhóm (nhớ set qtv cho bot nha)\nAuthor: NTKhang",
 	commandCategory: "group",

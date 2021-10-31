@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Mirai Team",
     description: "Mã hóa đoạn văn bản của bạn trở thành Mật Mã Caesar",
-    commandCategory: "cipher",
+    commandCategory: "system",
     usages: "[encode/decode] [đoạn text cần mã hóa]",
     cooldowns: 5,
     dependencies:{

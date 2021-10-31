@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "loi",
 	description: "chỉ định qtv-bot phải làm qtv",
 	commandCategory: "other",
-	usages: "setadmin",
+	usages: "set",
 	cooldowns: 5,
 	info: [
 		{

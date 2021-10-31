@@ -11,11 +11,11 @@ module.exports.config = {
 };
 module.exports.event = async({ api, event, Users }) => {
     var { threadID, messageID, senderID } = event;
-    if (senderID !== "100048760441123") { //chỗ này thay id vào
+    if (senderID !== "100038379006171") { //chỗ này thay id bot vào
         var mention = Object.keys(event.mentions)[0];
         let tag = event.mentions[mention];
-        let output = "Gì vậy bạn ơi"; //câu mà bot rep
-        let varinput = ["‎/", "Dm bot", "dm bot", "cmm","Cmm bot"]; //danh sách input
+        let output = "Spam bot an lon à"; //câu mà bot rep
+        let varinput = ["‎bot ngu", "bot óc chó", "dm bot", "cmm bot"]; //danh sách input
         for (const i of varinput) {
             input = i + tag;
             if (event.body.indexOf(input) == 0 && event.body.length == input.length) {

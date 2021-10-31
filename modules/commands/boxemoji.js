@@ -1,19 +1,17 @@
 module.exports.config = {
 	name: "boxemoji",
-	version: "1.0.0",
+	version: "1.0.0", 
 	hasPermssion: 0,
-	credits: "NTKhang",
-	description: "Đổi emoji nhóm ",
-	commandCategory: "Group",
-	usages: "boxemoji",
-	cooldowns: 5,
+	credits: "HungCatMoi",
+	description: "Đổi Emoji nhóm của bạn",
+	commandCategory: "Box", 
+	usages: "boxemoji [name]", 
+	cooldowns: 0,
+	dependencies: [] 
 };
 
-module.exports.run = async function({ global, api, event, args, Threads, client }) {
-const fs = require("fs-extra");
-  
- return api.changeThreadEmoji(args.join(" "), event.threadID, event.messagaID);
-  
-
-
+module.exports.run = async function({ api, event, args }) {
+	var emoji = args.join(" ")
+	if (!emoji) api.sendMessage("Bạn chưa nhập Emoji 💩💩", event.threadID, event.messageID)
+	else api.changeThreadEmoji(emoji, event.threadID, () => api.sendMessage(`🔨 Bot đã đổi thành công Emoji thành: ${emoji}`, event.threadID, event.messageID));
 }

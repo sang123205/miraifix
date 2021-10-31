@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "NTKhang",
   description: "Game thử thách trí nhớ của bạn",
-  commandCategory: "game-mp",
+  commandCategory: "game",
   usages: "[level](từ 1 tới 20)",
   cooldowns: 5,
   dependencies: {"canvas": "", "axios": ""}
@@ -47,10 +47,10 @@ module.exports.handleEvent = async function({ api, event, args }) {
 		var result1 = body;
 		var resulttrue = gamememory.get(senderID);
     if(resulttrue.toLocaleLowerCase() == result1.toLocaleLowerCase()) {
-	     api.sendMessage("Giỏi gke lun!!", threadID, messageID);
+	     api.sendMessage("You Win!!", threadID, messageID);
     }
 	  else{
-	     api.sendMessage("Thua rùi!! kết quả đúng là: "+resulttrue.toUpperCase(), threadID, messageID);
+	     api.sendMessage("You Lose!! kết quả đúng là: "+resulttrue.toUpperCase(), threadID, messageID);
 	  }
 	  global.client.gamememory.delete(senderID);
 	};

@@ -27,7 +27,7 @@ module.exports.run = function({
     let tag = event.mentions[mention].replace("@", "");
     let callback = function() {
       api.sendMessage({
-        body: tag + "Hun cài nè :3 ❤️",
+        body: tag + ", Yêu em nhiều lắm ❤️",
         mentions: [{
           tag: tag,
           id: Object.keys(event.mentions)[0]

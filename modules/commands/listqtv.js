@@ -5,7 +5,7 @@ module.exports.config = {
     credits: 'manhIT',
     description: 'Danh sách quản trị viên Box',
     commandCategory: 'Group',
-    usages: "listqtv",
+    usages: 'listqtv',
     cooldowns: 5,
     dependencies: []
 };

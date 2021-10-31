@@ -34,7 +34,7 @@ module.exports.run = async function ({ event, api, args, Users,Threads, __GLOBAL
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        return api.sendMessage(`🍁Đếm ngày yêu🍂\n\n💟${days} ngày ${hours} tiếng ${minutes} phút ${seconds} giây`, event.threadID, event.messageID);
+        return api.sendMessage(`🍁Đếm ngày yêu admin🍂\n\n💟${days} ngày ${hours} tiếng ${minutes} phút ${seconds} giây`, event.threadID, event.messageID);
   }
   else {
 

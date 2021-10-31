@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "Mirai Team",
 	description: "Quản lý/Kiểm soát toàn bộ module của bot",
 	commandCategory: "config",
-	usages: "cmd [load/unload/loadAll/unloadAll/info] [tên module]",
+	usages: "[load/unload/loadAll/unloadAll/info] [tên module]",
 	cooldowns: 5,
     dependencies: {
         "fs-extra": "",

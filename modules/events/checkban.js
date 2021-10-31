@@ -12,22 +12,23 @@ module.exports.run = async function({ api, event, client }) {
 		const fs = require('fs-extra');
 		let { threadID, messageID } = event;
 
-		if (!fs.existsSync(__dirname + `/../commands/cache/databan.json`)) return;
+		if (!fs.existsSync(__dirname + `/../commands/cache/bans.json`)) return;
 
-		var databan = JSON.parse(
-			fs.readFileSync(__dirname + `/../commands/cache/databan.json`)
+		var datawarn = JSON.parse(
+			fs.readFileSync(__dirname + `/../commands/cache/bans.json`)
 		);
 
-		var listban = databan.banned[threadID];
+		var listban = datawarn.banned[threadID];
 
 		const allUserThread = (await api.getThreadInfo(event.threadID))
 			.participantIDs;
+
 		for (let info of allUserThread) {
 			if (listban.includes(parseInt(info))) {
 				api.removeUserFromGroup(parseInt(info), threadID, e => {
 					if (e) return api.sendMessage(e, threadID);
 					api.sendMessage(
-						`@${global.data.userName.get(info)} không thể tham gia nhóm vì đã bị cấm vào nhóm.`,
+						`◆━━━━━━━━━◆ BANNED ◆━━━━━━━━━◆\n\n[${info}] không thể tham gia nhóm vì đã bị ban từ trước`,
 						threadID
 					);
 				});

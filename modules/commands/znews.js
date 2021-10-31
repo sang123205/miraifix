@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "zingnews",
+	name: "znews",
 	version: "1.0.2",
 	hasPermssion: 0,
 	credits: "HungCho",
 	description: "Báo tin tức zingnews !",
 	commandCategory: "news",
-	usages: "zingnews",
+	usages: "d",
 	cooldowns: 0,
 dependencies: {"axios": "","cheerio": ""}
 };

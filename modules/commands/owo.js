@@ -4,7 +4,6 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "Just owo",
-	usages: "ỏ"
 	commandCategory: "other",
 	cooldowns: 5
 };

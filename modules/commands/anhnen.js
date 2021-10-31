@@ -1,12 +1,12 @@
 ﻿module.exports.config = {
-	name: "hinhnendep",
+	name: "anhnen",
 	version: "1.0.0",
 	hasPermssion: 0,
 	credits: "VanHung",
 	description: "Gợi ý cho bạn ảnh nền",
-	commandCategory: "Phương tiện",
+	commandCategory: "Hình Ảnh",
 	usages: "anhnen",
-	cooldowns: 60
+	cooldowns: 5
 };
 
 module.exports.run = async ({ api, event }) => {
@@ -17,7 +17,7 @@ module.exports.run = async ({ api, event }) => {
 	let ext = res.data.data.response.url.substring(res.data.data.response.url.lastIndexOf(".") + 1);
 	let callback = function () {
 					api.sendMessage({
-						body: `⚡️Ảnh nền cực đẹp`,
+						body: `Ảnh nền cực đẹp`,
 						attachment: fs.createReadStream(__dirname + `/cache/wall.${ext}`)
 					}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/wall.${ext}`), event.messageID);
 				};

@@ -1,71 +1,63 @@
 module.exports.config = {
     name: "choigai",
-    version: "1.0.0",
-    hasPermssion: 1,
-    credits: "DungUwU",
-    description: "Chơi gái với 1 ai đó",
-    commandCategory: "Games",
-    usages: "choigai [tag]",
-    dependencies: {"path": "",
-     "jimp": ""
- },
-    cooldowns: 5
+    version: "2.2.2",
+    hasPermssion: 0,
+    credits: "CHIP2502",
+    description: "",
+    commandCategory: "Hình ảnh",
+    usages: "[@tag]",
+    cooldowns: 5,
+    dependencies: {
+        "axios": "",
+        "fs-extra": "",
+        "path": "",
+        "jimp": ""
+    }
 };
 
-module.exports.onLoad = () => {
-    const fs = global.nodemodule["fs-extra"];
-    const request = global.nodemodule["request"];
+module.exports.onLoad = async() => {
+    const { resolve } = global.nodemodule["path"];
+    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+    const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "choigai.png")) request("https://i.imgur.com/A7T04KJ.jpg").pipe(fs.createWriteStream(dirMaterial + "choigai.png"));
+    const path = resolve(__dirname, 'cache/canvas', 'choigai.png');
+    if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
+    if (!existsSync(path)) await downloadFile("https://i.imgur.com/A7T04KJ.jpg", path);
 }
-
 async function makeImage({ one, two }) {    
-    const axios = global.nodemodule["axios"];
     const fs = global.nodemodule["fs-extra"];
     const path = global.nodemodule["path"];
+    const axios = global.nodemodule["axios"];
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
     let choigai_image = await jimp.read(__root + "/choigai.png");
     let pathImg = __root + `/choigai_${one}_${two}.png`;
-    let avatarOne = __root + `/avt_${one}.png`;
-    let avatarTwo = __root + `/avt_${two}.png`;
-    
-    let getAvatarOne = (await axios.get(`https://4boxvn.com/api/avt?s=${one}`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
-    
-    let getAvatarTwo = (await axios.get(`https://4boxvn.com/api/avt?s=${two}`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatarTwo, Buffer.from(getAvatarTwo, 'utf-8'));
-    
-    let circleOne = await jimp.read(await circle(avatarOne));
-    let circleTwo = await jimp.read(await circle(avatarTwo));
+    let avatarOne = (await axios.get(`https://meewmeew.info/avatar/${one}`)).data;    
+    let avatarTwo = (await axios.get(`https://meewmeew.info/avatar/${two}`)).data;    
+    let circleOne = await jimp.read(await circle(Buffer.from(avatarOne, 'utf-8')));
+    let circleTwo = await jimp.read(await circle(Buffer.from(avatarTwo, 'utf-8')));
     choigai_image.composite(circleOne.resize(150, 150), 56, 164).composite(circleTwo.resize(150, 150), 380, 190);
-    
     
     let raw = await choigai_image.getBufferAsync("image/png");
     
     fs.writeFileSync(pathImg, raw);
-    fs.unlinkSync(avatarOne);
-    fs.unlinkSync(avatarTwo);
-    
     return pathImg;
 }
 async function circle(image) {
-    const jimp = global.nodemodule["jimp"];
+    const jimp = require("jimp");
     image = await jimp.read(image);
     image.circle();
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function ({ event, api, args, client }) {
+module.exports.run = async function ({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
-    let { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions);
-    let tag = event.mentions[mention].replace("@", "");
-    if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
+    const { threadID, messageID, senderID } = event;
+    const mention = Object.keys(event.mentions);
+    if (!mention[0]) return api.sendMessage("Vui lòng tag 1 người.", threadID, messageID);
     else {
         var one = senderID, two = mention[0];
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Đã Chưa Em" + `${tag}`,mentions: [{tag: tag,id: Object.keys(event.mentions)[0]}], attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Đã quá a ui :3", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }

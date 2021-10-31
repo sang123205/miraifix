@@ -7,7 +7,7 @@ module.exports.config = {
 	commandCategory: "random-img", 
 	usages: "randomcolor", 
 	cooldowns: 0,
-	dependencies: {} 
+	dependencies: [] 
 };
 
 module.exports.run = async ({ api, event, __GLOBAL }) => {

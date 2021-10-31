@@ -4,7 +4,7 @@ module.exports.config = {
 	credits: "Mirai Team",
 	hasPermssion: 0,
 	description: "Trả lời câu hỏi (tiếng anh)",
-	commandCategory: "gamequiz",
+	commandCategory: "game",
 	cooldowns: 5,
 	dependencies: {
 		"axios": ""

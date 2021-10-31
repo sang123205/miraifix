@@ -1,19 +1,19 @@
-﻿module.exports.config = {
+module.exports.config = {
   name: "goiadmin",
-  version: "1.0.0-beta-fixbyDungUwU",
+  version: "1.0.0",
   hasPermssion: 0,
-  credits: "ZyrosGenZ-fixbyDungUwU",
+  credits: "JRT",
   description: "Bot sẽ rep ng tag admin hoặc rep ng tagbot ",
-  commandCategory: "Other",
+  commandCategory: "Không cần dấu lệnh",
   usages: "",
   cooldowns: 1
 };
 module.exports.handleEvent = function({ api, event }) {
-  if (event.senderID !== "100022547652883") {
-    var aid = ["100022547652883"];
+  if (event.senderID !== "") {
+    var aid = ["100048524510645"];
     for (const id of aid) {
     if ( Object.keys(event.mentions) == id) {
-      var msg = ["Tag Admin lần nữa bố ban khỏi dùng","Tag Admin lần nữa tao đấm cho đấy","Đã bảo đừng tag Admin mà, thích ăn đấm hả😠","Đĩ mẹ mày thích tag Admin không con chó 😏"];
+      var msg = ["Tag Admin có gì ko?","Sao?? Làm ơn nhắn qua mess hoặc zalo để liên hệ ông chủ!!","Sao gọi chủ tôi có việc gì?","Hiện ông chủ tôi đang bận hãy sử dụng callad để liên hệ","Hãy dùng lệnh ad hoặc adm để biết thông tin liên hệ chủ tôi","Tag nữa ăn đấm","Tag làm gì?","Sao? Tag có việc gì?","Gọi vợ chồng anh/cô ấy có việc gì?","Thích tag ko :)","Tag gì lắm vậy? Bộ ko cho chủ tao xin phút gây bình yên à?","Sao tag có việc gì ngồi xuống uống tách trà tâm sự","Anh/cô ấy đang bận ? Có chi ko?","Hiện tại ông/bà chủ đang bận, có gì để lại tin nhắn qua người đó !!","Hãy dùng callad để liên hệ với admin >,<"];
       return api.sendMessage({body: msg[Math.floor(Math.random()*msg.length)]}, event.threadID, event.messageID);
     }
     }}

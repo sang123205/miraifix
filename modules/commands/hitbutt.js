@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "hitbutt",
-    version: "2.2.6",
+    version: "2.2.4",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "",
@@ -30,7 +30,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'hit_butt.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://dev.meewmeew.info/Module-Miraiv2/data/hitbutt.png", path);
+    if (!existsSync(path)) await downloadFile("https://git.meewmeew.info/data/hitbutt.png", path);
 }
 
 async function makeImage({ one, two }) {
@@ -44,19 +44,15 @@ async function makeImage({ one, two }) {
     let hit_butt_img = await jimp.read(__root + "/hit_butt.png");
     let pathImg = __root + `/hit_butt_${one}_${two}.png`;
 
-    try {
-        var avatarOne = (await axios.get(`https://meewmeew.info/avatar/${one}?apiey=${APIKEY}`)).data;    
-        var avatarTwo = (await axios.get(`https://meewmeew.info/avatar/${two}?apiey=${APIKEY}`)).data;
-        var circleOne = await jimp.read(await circle(Buffer.from(avatarOne, 'utf-8')));
-        var circleTwo = await jimp.read(await circle(Buffer.from(avatarTwo, 'utf-8')));        
-    } catch {
-        let raw = await hit_butt_img.getBufferAsync("image/png");    
-        fs.writeFileSync(pathImg, raw);
-        return pathImg;
-    }    
+    let avatarOne = (await axios.get(`https://meewmeew.info/avatar/${one}?apiey=${APIKEY}`)).data;    
+    let avatarTwo = (await axios.get(`https://meewmeew.info/avatar/${two}?apiey=${APIKEY}`)).data;
+    
+    let circleOne = await jimp.read(await circle(Buffer.from(avatarOne, 'utf-8')));
+    let circleTwo = await jimp.read(await circle(Buffer.from(avatarTwo, 'utf-8')));
     hit_butt_img.resize(500, 500).composite(circleOne.resize(130, 130), 225, 5).composite(circleTwo.resize(120, 120), 352, 220);
     
-    let raw = await hit_butt_img.getBufferAsync("image/png");    
+    let raw = await hit_butt_img.getBufferAsync("image/png");
+    
     fs.writeFileSync(pathImg, raw);
     return pathImg;
 }

@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 2,
   credits: "NTKhang",
   description: "Xem lịch sử sử dụng bot",
-  commandCategory: "admim",
+  commandCategory: "group",
   usages: "history",
   cooldowns: 5,
 }

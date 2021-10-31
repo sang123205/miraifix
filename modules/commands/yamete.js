@@ -5,11 +5,11 @@ name: "yamete",
 	hasPermssion: 0,
 	credits: "VanHung",
 	description: "yamete",
-	commandCategory: "NoCầnPrefix",
+	commandCategory: "Không cần dấu lệnh",
 	usages: "noprefix",
 	cooldowns: 5,
 };
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
+module.exports.event = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	if (event.body.indexOf("yamete")==0 || (event.body.indexOf("Yamete")==0)) {
 		var msg = {

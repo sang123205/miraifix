@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "VanHung",
 	description: "Xem ảnh về họ Thằn Lằn",
 	commandCategory: "Hình Ảnh",
-	usages: "thanlan",
+	usages: "boy",
 	cooldowns: 5
 };
 module.exports.run = async ({ api, event }) => {

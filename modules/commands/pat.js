@@ -31,7 +31,7 @@ module.exports.run = function({
     let tag = event.mentions[mention].replace("@", "");
     let callback = function() {
       api.sendMessage({
-        body: tag + ", hư nè!! ",
+        body: tag + ", Ê!! ",
         mentions: [{
           tag: tag,
           id: Object.keys(event.mentions)[0]

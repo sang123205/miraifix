@@ -1,4 +1,4 @@
-const request = global.nodemodule['request'];
+const request = require('request');
 
 module.exports.config = {
   name: "iss",
@@ -6,12 +6,12 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "BerVer",
   description: "Xem toạ độ mà tàu vũ trụ đang lưu lạc",
-  commandCategory: "space",
+  commandCategory: "news",
   usages: "iss",
   cooldowns: 5,
   dependencies: {
     "request": ""
-}
+  }
 };
 
 module.exports.run = function({

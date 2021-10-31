@@ -3,7 +3,7 @@ module.exports.config = {
 	version: "0.0.1",
 	hasPermssion: 2,
 	credits: "loi",
-	description: "thay đổi số exp của bản thân hoặc người được tag",
+	description: "thay đổi số tiền của bản thân hoặc người được tag",
 	commandCategory: "Economy",
 	usages: "setexp [Tag]",
 	cooldowns: 5,
@@ -32,7 +32,7 @@ var mention = Object.keys(event.mentions)[0];
 if (args[1] == 'me'){
 			var s = event.senderID;
 			const expme =(await Currencies.getData(event.senderID)).exp;
-			api.sendMessage(`✅Đã xoá toàn bộ số exp của bạn\nSố exp xoá là ${expme}. 🐮`, event.threadID, async() => {await Currencies.setData(event.senderID, {exp: parseInt(kong)})});
+			api.sendMessage(`✅Đã xoá toàn bộ số exp của bạn\nSố exp xoá là ${expme}.`, event.threadID, async() => {await Currencies.setData(event.senderID, {exp: parseInt(kong)})});
 		}	
 		else if (Object.keys(event.mentions).length == 1) {
 var mention = Object.keys(event.mentions);
@@ -40,7 +40,7 @@ var mention = Object.keys(event.mentions);
 		api.sendMessage(`✅Đã xoá toàn bộ số exp của ${event.mentions[mention].replace("@", "")}\nSố exp xoá là ${expdel}.`, event.threadID, async() => {await Currencies.setData(mention, {exp: parseInt(kong)})});
 		}
 		
-		else return	api.sendMessage("nhập sai lệnh rùi kìa 🐮", event.threadID, event.messageID);
+		else return	api.sendMessage("sai cú pháp", event.threadID, event.messageID);
 		}
 			else if (Object.keys(event.mentions).length == 1) {
 			return api.sendMessage({
@@ -59,6 +59,6 @@ var mention = Object.keys(event.mentions);
 
 		}
 else {
-	api.sendMessage("nhập sai lệnh rùi kìa 🐮", event.threadID, event.messageID)
+	api.sendMessage("sai cú pháp", event.threadID, event.messageID)
 	}
 }

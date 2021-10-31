@@ -5,8 +5,8 @@ module.exports.config = {
 	credits: "Khánh Milo",
 	description: "Phát nhạc thông qua từ khoá tìm kiếm ZingMp3", 
 	commandCategory: "media",
-	usages: "zmp4 [từ khoá tìm kiếm]",
-	cooldowns: 5, 
+	usages: "từ khoá tìm kiếm",
+	cooldowns: 0, 
 	dependencies: {
 		"fs-extra": "",
 		"axios": "",
@@ -19,11 +19,11 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
     api.sendMessage("Đang xử lý request của bạn!", event.threadID, (err, info) =>
     setTimeout(() => {api.unsendMessage(info.messageID) } , 10000));
     try {
-	var getms = (await axios.get(`http://api.mp3.zing.vn/api/streaming/audio/${handleReply.link[event.body - 1]}/320`, {responseType: "arraybuffer"})).data;
+	var getms = (await axios.get(`http://api.mp4.zing.vn/api/streaming/audio/${handleReply.link[event.body - 1]}/320`, {responseType: "arraybuffer"})).data;
     var shortLink = await global.nodemodule["tinyurl"].shorten(`http://api.mp3.zing.vn/api/streaming/audio/${handleReply.link[event.body - 1]}/320`);			
     fs.writeFileSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp3`, Buffer.from(getms, "utf-8")); 
-    if (fs.statSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp3`).size > 26214400) return api.sendMessage('Không thể gửi file vì dung lượng lớn hơn 25MB.', event.threadID, () => fs.unlinkSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp3`), event.messageID);
-    else api.sendMessage({body: `Link Tải: ${shortLink}`,attachment: fs.createReadStream(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp3`)}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp3`), event.messageID);
+    if (fs.statSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp3`).size > 99999999999999) return api.sendMessage('Không thể gửi file vì dung lượng lớn hơn 25MB.', event.threadID, () => fs.unlinkSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp4`), event.messageID);
+    else api.sendMessage({body: `Link Tải: ${shortLink}`,attachment: fs.createReadStream(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp4`)}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp4`), event.messageID);
 }
 catch {
     api.sendMessage("Không thể xử lý yêu cầu của bạn!", event.threadID, event.messageID);
@@ -36,7 +36,7 @@ module.exports.run = async function({ api, args, event }) {
  if (args.length == 0 || !args) return api.sendMessage('Phần tìm kiếm không được để trống!', event.threadID, event.messageID);
  const keywordSearch = args.join(" ");
  try {
- var getms = (await axios.get(`http://ac.mp3.zing.vn/complete?type=artist,song,key,code&num=500&query=${encodeURIComponent(keywordSearch)}`)).data;
+ var getms = (await axios.get(`http://ac.mp4.zing.vn/complete?type=artist,song,key,code&num=500&query=${encodeURIComponent(keywordSearch)}`)).data;
  var retrieve = getms.data[0], msg = '', num = 0, link = [];
  for (var i = 0; i < 5; i++) {
     if (typeof retrieve.song[i].id != 'undefined') {

@@ -1,16 +1,16 @@
 module.exports.config = {
-  name: "globalshort",
-  version: "1.0.0",
-  hasPermssion: 2,
-  credits: "CatalizCS",
-  description: "Phiên bản xịn hơn của short",
-  commandCategory: "system",
+	name: "globalshort",
+	version: "1.0.0",
+	hasPermssion: 2,
+	credits: "CatalizCS",
+	description: "Phiên bản xịn hơn của short",
+	commandCategory: "system",
     usages: "[all/delete/empty]",
-  cooldowns: 5,
-  dependencies: {
-    "fs-extra": "",
+	cooldowns: 5,
+	dependencies: {
+		"fs-extra": "",
         "path": ""
-  }
+	}
 }
 
 module.exports.onLoad = function () {

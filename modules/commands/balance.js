@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "balance",
+	name: "money",
 	version: "1.0.2",
 	hasPermssion: 0,
 	credits: "Mirai Team",

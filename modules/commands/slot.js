@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Mirai Team",
     description: "Đánh bạc bằng hình thức hoa quả",
-    commandCategory: "game-sp",
+    commandCategory: "game",
     usages: "[số coin cần đặt]",
     cooldowns: 5,
 };

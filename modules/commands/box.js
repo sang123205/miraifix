@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "HungCho (Khánh Milo Fix)",
     description: "Các cài đặt của nhóm chat.",
-	commandCategory: "Group",
+	commandCategory: "box",
 	usages: "[name/emoji/admin/image/info]",
 	cooldowns: 1,
 	dependencies: {
@@ -16,7 +16,7 @@ module.exports.config = {
 module.exports.run = async({api, event, args}) => {
 	const fs = global.nodemodule["fs-extra"];
 	const request = global.nodemodule["request"];
-	 if (args.length == 0) return api.sendMessage(`Bạn có thể dùng:\n!box emoji [icon]\n\n!box name [tên box cần đổi]\n\n!box image [rep một ảnh bất kì cần đặt thành ảnh box]\n\n!box admin [tag] => nó sẽ đưa qtv cho người được tag\n\n!box info => Toàn bộ thông tin của nhóm !
+	 if (args.length == 0) return api.sendMessage(`Bạn có thể dùng:\n/box emoji [icon]\n\n/box name [tên box cần đổi]\n\n/box image [rep một ảnh bất kì cần đặt thành ảnh box]\n\n/box admin [tag] => nó sẽ đưa qtv cho người được tag\n\n/box info => Toàn bộ thông tin của nhóm !
 `, event.threadID, event.messageID);
 
 

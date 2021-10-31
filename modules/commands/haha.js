@@ -9,7 +9,7 @@ name: "haha",
   usages: "noprefix",
   cooldowns: 5,
 };
-module.exports.event = function({ api, event }) {
+module.exports.handleEvent = function({ api, event }) {
   var { threadID, messageID } = event;
   if (event.body.indexOf("Haha")==0 || (event.body.indexOf("haha")==0)) {
     var msg = {

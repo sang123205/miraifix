@@ -2,7 +2,7 @@ module.exports.config = {
     name: "hololive",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "DuyVuong",
+    credits: "HTHB và Duy ngu",
     description: "Kho Ảnh của Hà",
     commandCategory: "nsfw",
     usages: "[rushia/pekora/coco/gura/marine]",
@@ -32,15 +32,14 @@ module.exports.run = async function({ api, event, args }) {
     type = "marine";
     break;
     default:
-    return api.sendMessage(`  =====Tất cả Các Tag của hololive=====
- rushia, gura, coco, marine, pekora`, threadID, messageID);
+    return api.sendMessage(`=====Các Tag=====\nrushia, gura, coco, marine, pekora`, threadID, messageID);
     break;
   }
 axios.get(`https://img-hololive-api.up.railway.app/${type}`).then(res => {
 let ext = res.data.url.substring(res.data.url.lastIndexOf(".") + 1);
     let callback = function () {
                     api.sendMessage({
-                        body: "=))",
+                        body: "",
                         attachment: fs.createReadStream(__dirname + `/cache/${type}.${ext}`)
                     }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${type}.${ext}`), event.messageID);
                 };

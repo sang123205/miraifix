@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "alltag",
+	name: "all",
 	version: "1.0.4",
 	hasPermssion: 1,
 	credits: "Mirai Team",

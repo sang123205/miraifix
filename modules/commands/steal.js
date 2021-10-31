@@ -1,10 +1,10 @@
-﻿module.exports.config = {
+module.exports.config = {
 	name: "steal",
 	version: "1.0.0",
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "là steal đó",
-	commandCategory: "Tài chính",
+	commandCategory: "economy",
 	usages: "",
 	cooldowns: 5
 };

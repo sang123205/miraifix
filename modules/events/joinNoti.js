@@ -14,7 +14,7 @@ module.exports.run = async function({ api, event, Users }) {
 	const { threadID } = event;
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
 		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Bypass bởi Mai Huy Bảo" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-		return api.sendMessage(`chào mọi người tôi là bot siu cấp vjp pro`, threadID);
+		return api.sendMessage(`Đ𝑎̃ 𝑘𝑒̂́𝑡 𝑛𝑜̂́𝑖 𝑡ℎ𝑎̀𝑛ℎ 𝑐𝑜̂𝑛𝑔 🤡! 𝐵𝑜𝑡 𝑛𝑎̀𝑦 𝑑𝑜 𝑎𝑖 đ𝑜́ 𝑡𝑎̣𝑜 𝑟𝑎 𝑣𝑎̀ 𝐵𝑦𝑝𝑎𝑠𝑠 Gban by Mai Huy Bảo 🥳\n𝑉𝑎̀ 𝑏𝑜𝑡 đ𝑎𝑛𝑔 đ𝑢̛𝑜̛̣𝑐 𝑠𝑢̛̉ 𝑑𝑢̣𝑛𝑔 𝑏𝑜̛̉𝑖 𝑁𝑔𝑢𝑦𝑒̂̃𝑛 𝑀𝑎̣𝑛ℎ 𝐾ℎ𝑜𝑎 😍\n𝐷𝑢̀𝑛𝑔 𝑙𝑒̣̂𝑛ℎ >menu đ𝑒̂̉ 𝑏𝑖𝑒̂́𝑡 𝑐𝑎́𝑐 𝑙𝑒̣̂𝑛ℎ <3`, threadID);
 	}
 	else {
 		try {
@@ -23,7 +23,7 @@ module.exports.run = async function({ api, event, Users }) {
 
 			const threadData = global.data.threadData.get(parseInt(threadID)) || {};
 			const path = join(__dirname, "cache", "joinGif");
-			const pathGif = join(path, `${threadID}.gif`);
+			const pathGif = join(path, `29441881_267062690499752_911636319296290816_n.gif`);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;
 			
@@ -41,7 +41,7 @@ module.exports.run = async function({ api, event, Users }) {
 			}
 			memLength.sort((a, b) => a - b);
 			
-			(typeof threadData.customJoin == "undefined") ? msg = "Queo cơm {name}.\nChào mừng đã đến với {threadName}.\n{type} là thành viên thứ {soThanhVien} của nhóm 🥳" : msg = threadData.customJoin;
+			(typeof threadData.customJoin == "undefined") ? msg = "𝑊𝑒𝑙𝑐𝑜𝑚𝑒 𝑎𝑏𝑜𝑎𝑟𝑑 {name} 🥳.\n𝐶ℎ𝑎̀𝑜 𝑚𝑢̛̀𝑛𝑔 đ𝑎̃ đ𝑒̂́𝑛 𝑣𝑜̛́𝑖 {threadName} 🥰.\n{type} 𝑙𝑎̀ 𝑡ℎ𝑎̀𝑛ℎ 𝑣𝑖𝑒̂𝑛 𝑡ℎ𝑢̛́ {soThanhVien} 𝑐𝑢̉𝑎 𝑛ℎ𝑜́𝑚 🥳." : msg = threadData.customJoin;
 			msg = msg
 			.replace(/\{name}/g, nameArray.join(', '))
 			.replace(/\{type}/g, (memLength.length > 1) ?  'các bạn' : 'bạn')

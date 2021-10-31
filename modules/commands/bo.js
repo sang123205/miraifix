@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "Thanh dz",
 	description: "Random ảnh đức bo gây buồn nôn nhất Việt Nam :))",
 	commandCategory: "random-img",
-	usages: "bo",
+	usages: "",
 	cooldowns: 5
 };
 
@@ -13,7 +13,7 @@ module.exports.run = async ({ api, event }) => {
 	const axios = require('axios');
 	const request = require('request');
 	const fs = require("fs");
-	axios.get('https://api.berver.tech/duckbo').then(res => {
+	axios.get('https://api.vangbanlanhat.tk/image?type=DuckBo').then(res => {
 	let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
 	let callback = function () {
 					api.sendMessage({

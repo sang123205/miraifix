@@ -1,84 +1,45 @@
 module.exports.config = {
-  name: "ghep",
-  version: "1.0.5",
+  name: "ghepcap",
+  version: "1.0.0", 
   hasPermssion: 0,
-  credits: "KhanhMilo",
-  description: "Ghép đôi với 1 đứa trong nhóm",
-  commandCategory: "Group",
-  usages: "ghep",
-  cooldowns: 1,
-  dependencies: {
-		"fs-extra": "",
-		"axios": "" 
-	},
-  envConfig: {
-       cooldownTime: 300000
-  }
+  credits: "Hungcho edit by Hungdz30cm",
+  description: "Ghep doi ngau nhien",
+  commandCategory: "random-img", 
+  usages: "", 
+  cooldowns: 0,
 };
-
-module.exports.run = async function ({ api, event, args, Threads, Users,Currencies }) {
-  const axios = global.nodemodule["axios"];
-  const fs = global.nodemodule["fs-extra"];
-  
-  
-  var mention = Object.keys(event.mentions)[0];
-  var emoji = ["♥️","❤️","💛","💚","💙","💜","🖤","💖","💝","💓","💘","💍","🎁","💋","💎","💠","🌈","🌍","🌕","☀️"]
-  var random_emoji = emoji[Math.floor(Math.random() * emoji.length)];
-
-  if (!mention) {
-    let all = (await Threads.getInfo(event.threadID)).participantIDs;
-    
-    await all.splice(all.indexOf(api.getCurrentUserID()), 1);
-    await all.splice(all.indexOf(event.senderID), 1);
-    var random = all[Math.floor(Math.random() * all.length)];
-    let data = await api.getUserInfo(parseInt(random));
-    let dt = await api.getUserInfo(event.senderID);
-    let getgif = (await axios.get(`https://4boxvn.com/api/yeu.php`)).data;
-    let gif = (await axios.get(getgif.url, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync( __dirname + "/cache/gif.gif", Buffer.from(gif, 'utf-8'));
-    let Avatar1 = (await axios.get(`https://graph.facebook.com/${event.senderID}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync( __dirname + "/cache/avt1.png", Buffer.from(Avatar1, 'utf-8'));
-	let Avatar2 = (await axios.get(`https://graph.facebook.com/${random}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync( __dirname + "/cache/avt2.png", Buffer.from(Avatar2, 'utf-8'));
-	  
-    let name_1 = dt[event.senderID].name;
-    let name_2 = data[parseInt(random)].name;
-    let imglove = [] ;
-    imglove.push(fs.createReadStream(__dirname + "/cache/avt1.png"));
-    imglove.push(fs.createReadStream(__dirname + "/cache/gif.gif"));
-    imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
-    if (name_2 == undefined) {
-      api.changeNickname( `${ dt[event.senderID].gender == 2 ? "Vợ của" : dt[event.senderID].gender == 1 ? "Chồng của" : "BêĐê của" } ${name_1} ${random_emoji}`, event.threadID, parseInt(random) );
-      api.changeNickname( `${ data[parseInt(random)].gender == 2 ? "Vợ của" : data[random].gender == 1 ? "Chồng của" : "BêĐê của" } 1 người chưa biết tên ${random_emoji}`, event.threadID, event.senderID );
-	} else {
-      api.changeNickname( `${ dt[event.senderID].gender == 2 ? "Vợ của" : dt[event.senderID].gender == 1 ? "Chồng của" : "BêĐê của" } ${name_1} ${random_emoji}`, event.threadID, parseInt(random) );
-      api.changeNickname( `${ data[parseInt(random)].gender == 2 ? "Vợ của" : data[random].gender == 1 ? "Chồng của" : "BêĐê của" } ${name_2} ${random_emoji}`, event.threadID, event.senderID );
-      api.sendMessage( { body: `Hai bạn đã ghép đôi thành công\n\n💓 ${name_1} - ${name_2} 💓` ,  attachment: imglove , mentions : [{tag: `${name_1}`, id: event.senderID} , {tag: `${name_2}`, id: random} ]}, event.threadID );
+module.exports.run = async function({ api, event, args, Users, Threads, Currencies }) {
+        const axios = global.nodemodule["axios"];
+        const fs = global.nodemodule["fs-extra"];
+        var data = await Currencies.getData(event.senderID);
+        var money = data.money
+        if(money < 500) api.sendMessage("Bạn cần 500 đô cho 1 lần ghép hãy tích cực làm việc hoặc xin admin bot!\n🤑Có làm mới có ăn🤑",event.threadID,event.messageID)
+        else {
+        var tl = ['21%', '67%', '19%', '37%', '17%', '96%', '52%', '62%', '76%', '83%', '100%', '99%', "0%", "48%"];
+        var tle = tl[Math.floor(Math.random() * tl.length)];
+        let dataa = await api.getUserInfo(event.senderID);
+        let namee = await dataa[event.senderID].name
+        let loz = await api.getThreadInfo(event.threadID);
+        var emoji = loz.participantIDs;
+        var id = emoji[Math.floor(Math.random() * emoji.length)];
+        let data = await api.getUserInfo(id);
+        let name = await data[id].name
+        var arraytag = [];
+                arraytag.push({id: event.senderID, tag: namee});
+                arraytag.push({id: id, tag: name});
+        api.changeNickname(`Con vợ của ${name}`, event.threadID, event.senderID);
+        api.changeNickname(`Thằng chồng của ${namee}`, event.threadID, id);
+        var sex = await data[id].gender;
+        var gender = sex == 2 ? "Nam🧑" : sex == 1 ? "Nữ👩‍🦰" : "Trần Đức Bo";
+        Currencies.setData(event.senderID, options = {money: money - 500})
+        let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: "arraybuffer" } )).data;
+            fs.writeFileSync( __dirname + "/cache/avt.png", Buffer.from(Avatar, "utf-8") );
+        let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: "arraybuffer" } )).data;
+            fs.writeFileSync( __dirname + "/cache/avt2.png", Buffer.from(Avatar2, "utf-8") );
+        var imglove = [];
+              imglove.push(fs.createReadStream(__dirname + "/cache/avt.png"));
+              imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
+        var msg = {body: `Hoàn thanh ghép đôi bạn đã mất 500 đô!\nNgười ghép đôi với bạn có giới tính: ${gender}\nTỉ lệ hợp đôi: ${tle}\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
+        return api.sendMessage(msg, event.threadID, event.messageID)
       }
-  }
-   else {
-    let data = await api.getUserInfo(mention);
-    let dt = await api.getUserInfo(event.senderID);
-    let getgif = (await axios.get(`https://4boxvn.com/api/yeu.php`)).data;
-    let gif = (await axios.get(getgif.url, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync( __dirname + "/cache/gif.gif", Buffer.from(gif, 'utf-8'));
-    let Avatar1 = (await axios.get(`https://graph.facebook.com/${event.senderID}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync( __dirname + "/cache/avt1.png", Buffer.from(Avatar1, 'utf-8'));
-	let Avatar2 = (await axios.get(`https://graph.facebook.com/${mention}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync( __dirname + "/cache/avt2.png", Buffer.from(Avatar2, 'utf-8'));
-    let imglove = [];
-    imglove.push(fs.createReadStream(__dirname + "/cache/avt1.png"));
-    imglove.push(fs.createReadStream(__dirname + "/cache/gif.gif"));
-    imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
-    let name_1 = dt[event.senderID].name;
-    let name_2 = data[mention].name;
-    if (name_2 == undefined) {
-      api.changeNickname( `${ dt[event.senderID].gender == 2 ? "Vợ của" : dt[event.senderID].gender == 1 ? "Chồng của" : "BêĐê của" } ${name_1} ${random_emoji}`, event.threadID, mention );
-      api.changeNickname( `${ data[mention].gender == 2 ? "Vợ của" : data[mention].gender == 1 ? "Chồng của" : "BêĐê của" } 1 người chưa biết tên ${random_emoji}`, event.threadID, event.senderID );
-      } else {
-      api.changeNickname( `${dt[event.senderID].gender == 2 ? "Vợ của" : dt[event.senderID].gender == 1 ? "Chồng của" : "BêĐê của" } ${name_1} ${random_emoji}`, event.threadID, mention );
-      api.changeNickname( `${data[mention].gender == 2 ? "Vợ của" : data[mention].gender == 1 ? "Chồng của" : "BêĐê của" } ${name_2} ${random_emoji}`, event.threadID, event.senderID );
-      api.sendMessage( { body: `Hai bạn đã ghép đôi thành công\n\n💓 ${name_1} - ${name_2} 💓` ,  attachment: imglove , mentions : [{tag: `${name_1}`, id: event.senderID} , {tag: `${name_2}`, id: mention} ]}, event.threadID );
-      }
-  }
-};
+}

@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "afk",
-	version: "1.0.2",
-	hasPermssion: 2,
-	credits: "CatalizCS",
-	description: "Bật tắt chế độ afk!",
-	commandCategory: "other",
-	usages: "[reason]",
+    name: "afk",
+    version: "1.0.2",
+    hasPermssion: 0,
+    credits: "CatalizCS",
+    description: "Bật tắt chế độ afk!",
+    commandCategory: "other",
+    usages: "[reason]",
     cooldowns: 5,
     dependencies: {
         "axios": "",

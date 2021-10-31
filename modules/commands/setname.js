@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "Mirai Team",
 	description: "Đổi biệt danh trong nhóm của bạn hoặc của người bạn tag",
 	commandCategory: "other",
-	usages: "setname [name]",
+	usages: "[name]",
 	cooldowns: 3
 };
 

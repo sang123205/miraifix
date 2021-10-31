@@ -4,8 +4,8 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Mirai Team",
     description: "Tham gia câu cá ngay trên chính nhóm của bạn",
-    commandCategory: "game-mp",
-    usages: "register",
+    commandCategory: "game",
+    usages: "help",
     cooldowns: 0,
     dependencies: {
         "fs-extra": "",
@@ -299,7 +299,7 @@ module.exports.run = async function ({ event, api, args }) {
         
         default: {
             try {
-                if (!existsSync(dirUser)) return api.sendMessage("[ Fishing ] Bạn chưa đăng ký câu cá tại khu vực này!", threadID, messageID);
+                if (!existsSync(dirUser)) return api.sendMessage(`[ Fishing ] Bạn chưa đăng ký câu cá tại khu vực này! Hãy đăng kí bằng cách nhấn "/fishing register" để tham đăng kí câu cá 🥳`, threadID, messageID);
                 var dataUser = JSON.parse(readFileSync(dirUser, "utf-8"));
                 const dateNow = moment().tz("Asia/Ho_Chi_minh");
                 const format = new Intl.NumberFormat();

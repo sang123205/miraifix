@@ -1,38 +1,30 @@
-module.exports.config = {
-  name: "fbget",
-  version: "0.0.1",
-  hasPermssion: 0,
-  credits: "Lợi",
-  description: "fbget [link]",
-  commandCategory: "media",
-  usages: "fbget [link]",
-  cooldowns: 5,
-    dependencies: {"fb-tools": "",
-    "axios": ""
-}
+﻿module.exports.config = {
+	name: "fbget",
+	version: "0.0.1",
+	hasPermssion: 0,
+	credits: "Lợi",
+	description: "fbget mp4 --- fbget mp3",
+	commandCategory: "media",
+	usages: "fbget mp3/mp4 [link]",
+	cooldowns: 5,
+    dependencies: {"facebook-tools": "",
+	               "axios": ""
+}	   
 
 };
 
-module.exports.run = async function({ api, event, args}) {
+module.exports.run = async function({ api, event, args, Currencies, utils }) {
     const fs = require("fs");
     const axios = require("axios");
-  const facebookTools = require("fb-tools");
-    var url = args.join(" ");
-    if(!url) api.sendMessage("Vui lòng nhập link video cần download !",event.threadID,event.messageID);
-    else{
+	const facebookTools = require("fb-tools");
+    
     api.sendMessage("Đang xử lí yêu cầu của bạn!!!", event.threadID);
-    try{
-    let video = await facebookTools.getVideoUrl(url);
+    var url = args.join(" ")
+   let video = await facebookTools.getVideoUrl(url);
     var body = "✅Loaded success✅"
     let path = __dirname + "/cache/a1.mp4";
-    
-    var getvideo = (await axios.get(`${video.hd}`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(path, Buffer.from(getvideo, "utf-8"));  
+   var getvideo = (await axios.get(`${video.hd}`, { responseType: 'arraybuffer' })).data;
+ fs.writeFileSync(path, Buffer.from(getvideo, "utf-8"));  
     console.log(video)
-    api.sendMessage({attachment: fs.createReadStream(__dirname + "/cache/a1.mp4"), body: body}, event.threadID);
-    }
-    catch(e){
-        api.sendMessage("Đã xảy ra lỗi khi tải video này !",event.threadID,event.messageID)
-       }
-    }
-}
+     api.sendMessage({attachment: fs.createReadStream(__dirname + "/cache/a1.mp4"), body: body}, event.threadID);
+ }

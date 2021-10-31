@@ -1,11 +1,11 @@
-﻿module.exports.config = {
-    name: "sendmsg",
-    version: "0.0.2",
-    hasPermssion: 2,
-    credits: "Dũng UwU fix by HTHB",
-    description: "sendmsg",
-    commandCategory: "general",
-    usages: "sendmsg [user]/[thread] id msg",
+module.exports.config = {
+	name: "sendmsg",
+	version: "0.0.2",
+	hasPermssion: 2,
+	credits: "Dũng UwU fix by HTHB",
+	description: "sendmsg",
+	commandCategory: "general",
+	usages: "sendmsg [user]/[thread] id msg",
     cooldowns: 5,
 };
 

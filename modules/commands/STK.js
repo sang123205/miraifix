@@ -14,7 +14,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	if (event.body.indexOf("stk")==0 || (event.body.indexOf("stk")==0)) {
 		var msg = {
-				body: "Mình cho thuê bot với giá 0đ nhưng bạn nào có lòng tốt thì cứ bank qua cho mình nhé <3 iuuu\n\n\n🐳🐳🐳 MOMO: 0987664301 - Trần Duy Công Thành 🐳🐳🐳\n🐳🐳🐳Sacombank: 050116332385 - Trần Duy Công Thành🐳🐳🐳\n🐳🐳🐳Paypal: conghanh28924@gmail.com 🐳🐳🐳",
+				body: "admin deo co so tai khoan hay bank dau, stk con cac",
 			}
 			api.sendMessage(msg, threadID, messageID);
 		}

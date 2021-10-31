@@ -3,7 +3,7 @@
     version: "1.0.0",
     hasPermssion: 2,
     credits: "Thùy",
-    description: "delete all",
+    description: "cc del all",
     commandCategory: "admin",
     usages: "[cc], [del], [all]",
     cooldowns: 5
@@ -21,5 +21,5 @@ module.exports.run = async ({ api, event, Currencies }) => {
             }
         }
     }
-    return api.sendMessage("Giờ ai cũng ngu như ai nhỉ :vv", event.threadID);
+    return api.sendMessage("done", event.threadID);
 }

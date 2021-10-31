@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "MewMew",
   description: "Tìm Kiếm Nửa Kia Của Bạn",
-  commandCategory: "BOXCHAT",
+  commandCategory: "Hình ảnh",
   usages: "[pairing/boy/girl]",
   cooldowns: 20
 }
@@ -24,14 +24,14 @@ module.exports.run = async ({ api, event,args, Users }) => {
               }
             }
             console.log(data)
-            if (data.length == 0) return api.sendMessage("Rất tiếc!Pò hong tìm thấy nửa đời của bạn :(", event.threadID, event.messageID);
+            if (data.length == 0) return api.sendMessage("Rất tiếc! Không tìm thấy nửa đời của bạn :(", event.threadID, event.messageID);
             let e = data[Math.floor(Math.random() * data.length)]
             let d = await api.getUserInfo(e);
             let a = (Math.random() * 50)+50;
             let n = d[e].name
             let b = d[e].gender
           let url = d[e].profileUrl;
-            let getAvatar = (await axios.get(`https://graph.facebook.com/${event.senderID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
+            let getAvatar = (await axios.get(`https://4boxvn.com/api/avt?s=${e}`, { responseType: 'arraybuffer' })).data;
             fs.writeFileSync(__dirname + "/cache/avt.png", Buffer.from(getAvatar, 'utf-8'));     
             api.sendMessage({ body: `Tìm Kiếm Nửa Kia Của Bạn\nTên: ${n}\nGiới Tính: ${(b == 2) ? "Nam" : (b == 1) ? "Nữ" : "Gay"}\nMối Quan Hệ: Độc Thân (có thể)\nĐộ Phù Hợp: ${a.toFixed(2)}%\nInbox: m.me/${e}\nProfile: ${url}`,
                   attachment: fs.createReadStream(__dirname + `/cache/avt.png`)
@@ -55,14 +55,14 @@ module.exports.run = async ({ api, event,args, Users }) => {
                 }
             }}
             console.log(data)
-            if (data.length == 0) return api.sendMessage("Rất tiếc!Pò không tìm thấy nửa đời của bạn :(", event.threadID, event.messageID);
+            if (data.length == 0) return api.sendMessage("Rất tiếc! Không tìm thấy nửa đời của bạn :(", event.threadID, event.messageID);
             let e = data[Math.floor(Math.random() * data.length)]
             let d = await api.getUserInfo(e);
             let a = (Math.random() * 50)+50;
             let n = d[e].name
             let b = d[e].gender
           let url = d[e].profileUrl;
-            let getAvatar = (await axios.get(`https://graph.facebook.com/${event.senderID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
+            let getAvatar = (await axios.get(`https://4boxvn.com/api/avt?s=${e}`, { responseType: 'arraybuffer' })).data;
             fs.writeFileSync(__dirname + "/cache/avt.png", Buffer.from(getAvatar, 'utf-8'));     
             api.sendMessage({ body: `Tìm Kiếm Nửa Kia Của Bạn\nTên: ${n}\nGiới Tính: ${(b == 2) ? "Nam" : (b == 1) ? "Nữ" : "Gay"}\nMối Quan Hệ: Độc Thân (có thể)\nĐộ Phù Hợp: ${a.toFixed(2)}%\nInbox: m.me/${e}\nProfile: ${url}`,
                   attachment: fs.createReadStream(__dirname + `/cache/avt.png`)

@@ -4,12 +4,12 @@
 */
 
 module.exports.config = {
-	name: "filter",
+	name: "locmemkott",
 	version: "2.0.1",
 	hasPermssion: 1,
 	credits: "ProCoderMew",
 	description: "Lọc cá cảnh trong group",
-	commandCategory: "group",
+	commandCategory: "lọc box",
 	usages: "[num]",
 	cooldowns: 30
 };

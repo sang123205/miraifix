@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "Mirai Team",
 	description: "Cấm hoặc gỡ cấm nhóm",
 	commandCategory: "system",
-	usages: "thread [unban/ban/search] [ID or text]",
+	usages: "[unban/ban/search] [ID or text]",
 	cooldowns: 5,
 	dependencies: {
 		"moment-timezone": ""

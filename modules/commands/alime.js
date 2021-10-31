@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "alime",
-    version: "1.1.3",
+    version: "1.1.2",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "alime sfw và cả alime nsfw :)",
@@ -24,7 +24,7 @@ module.exports.onLoad = async function () {
     const { existsSync, readFileSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const path = resolve(__dirname, 'cache', 'alime.json');
-    const url = "https://dev.meewmeew.info/Module-Miraiv2/data/alime.json";
+    const url = "https://git.meewmeew.info/data/alime.json";
 
     try {
         if (!existsSync(path)) await downloadFile(url, path);

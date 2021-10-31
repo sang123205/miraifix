@@ -11,9 +11,9 @@ name: "Mày đừng có mà bốc phét",
 };
 module.exports.handleEvent = function({ api, event }) {
 	var { threadID, messageID } = event;
-	if (event.body.indexOf("Bốc phét ít thôi")==0 || (event.body.indexOf("bốc phét ít thôi")==0)) {
+	if (event.body.indexOf("Mày đừng có mà bốc phét")==0 || (event.body.indexOf("bốc phét ít thôi")==0)) {
 		var msg = {
-				body: "phét thế bạn ơi",
+				body: "",
 				attachment: fs.createReadStream(__dirname + `/cache/thoithoithoi.mp3`)
 			}
 			return api.sendMessage(msg, threadID, messageID);
