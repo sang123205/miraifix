@@ -49,7 +49,7 @@ module.exports.run = function({ api, event, args }) {
     async function (error, info){
 			if (global.configModule[moduleName].autoUnsend) {
 				console.log(global.configModule[moduleName].autoUnsend);
-				await new Promise(resolve => setTimeout(resolve, global.configModule[moduleName].unsendMessageAfter * 1000));
+				await new Promise(resolve => setTimeout(resolve, global.configModule[moduleName].unsendMessageAfter * 120000));
 				return api.unsendMessage(info.messageID);
 			} else return;
 		});

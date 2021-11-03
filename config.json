@@ -13,10 +13,10 @@
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
-    "BOTNAME": "Bot Dởm 2 lệnh",
-    "PREFIX": ".",
+    "BOTNAME": "HCl",
+    "PREFIX": "/",
     "ADMINBOT": [
-        "100071149253340",
+        "100045223667485",
         "",
         ""
     ],
@@ -103,7 +103,7 @@
     },
     "menu": {
         "autoUnsend": true,
-        "delayUnsend": 120,
+        "delayUnsend": 120000,
         "unsendMessageAfter": 5
     },
     "covid": {
