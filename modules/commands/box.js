@@ -1,119 +1,94 @@
 module.exports.config = {
-	name: "box",
-	version: "1.0.0",
-	hasPermssion: 0,
-	credits: "HungCho (Khánh Milo Fix)",
-    description: "Các cài đặt của nhóm chat.",
-	commandCategory: "box",
-	usages: "[name/emoji/admin/image/info]",
-	cooldowns: 1,
-	dependencies: {
-		"request":"",
-		"fs-extra":""
-}
+  name: "box",
+  version: "1.0.0",
+  hasPermssion: 0,
+  credits: "manhIT",
+  description: "Các tag của box: info, id, emoji, name, image",
+  commandCategory: "Group",
+  usages: "[info / id / name / emoji / image]",
+  cooldowns: 5,
+
 };
+module.exports.run = async({ event, api, args, Currencies, Users, reminder }) => {
+  var request = global.nodemodule["request"];
+  var fs = global.nodemodule["fs-extra"];
 
-module.exports.run = async({api, event, args}) => {
-	const fs = global.nodemodule["fs-extra"];
-	const request = global.nodemodule["request"];
-	 if (args.length == 0) return api.sendMessage(`Bạn có thể dùng:\n/box emoji [icon]\n\n/box name [tên box cần đổi]\n\n/box image [rep một ảnh bất kì cần đặt thành ảnh box]\n\n/box admin [tag] => nó sẽ đưa qtv cho người được tag\n\n/box info => Toàn bộ thông tin của nhóm !
-`, event.threadID, event.messageID);
+  var input = args[0];
 
+  //if (!input == "") { api.sendMessage("Vui lòng nhập nhập đúng cú pháp: /box [info, id, emoji, image, name]"), event.threadID, event.messageID};
+if (args.length == 0) api.sendMessage("Lỗi cú pháp: box [info, id, emoji, image, name]", event.threadID, event.messageID);
+  
+  if (input == "info") {
+      let threadInfo = (await api.getThreadInfo(event.threadID));
+      let sex = threadInfo.approvalMode;
+      var pd = sex == false ? "Đang tắt" : sex == true ? "Đang bật" : "Không phải Thread";
+      var name = threadInfo.name;
+      let countMess = threadInfo.messageCount;
+      let num = threadInfo.adminIDs.length;
+      var boy = [];
+      var nu = [];
+      for (let i in threadInfo.userInfo) {
+          var gei = threadInfo.userInfo[i].gender;
+          var emoji = threadInfo.emoji;
+          if (gei == "MALE") { boy.push(i) } else if (gei == "FEMALE") { nu.push(i) }
+      }
+      var callback = () => api.sendMessage({ body: `🏷Tên box: ${name} \n🧩TID: ${event.threadID}\n💸Emoji: ${emoji}\n📩Số tin nhắn: ${countMess}\n👻Admin: ${num}\n🐸Số thành viên: ${threadInfo.participantIDs.length}\n👩🏻‍🦰Nam: ${boy.length}\n👨🏻Nữ: ${nu.length}\nPhê duyệt nhóm: ${pd}`, attachment: fs.createReadStream(__dirname + "/cache/2.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/2.png"));
+      return request(encodeURI(`${threadInfo.imageSrc}`)).pipe(fs.createWriteStream(__dirname + '/cache/2.png')).on('close', () => callback());
+  }
 
-	if (args[0] == "name") {
-var content = args.join(" ");
-var c = content.slice(4, 99) || event.messageReply.body;
-api.setTitle(`${c } `, event.threadID);
- }
-	if (args[0] == "emoji") {
-const name = args[1] || event.messageReply.body;
-api.changeThreadEmoji(name, event.threadID)
+  if (input == "id") {
+      return api.sendMessage(`${event.threadID}`, event.threadID, event.messageID);
+  }
 
- }
-if(args[0] == "me"){
-	 if (args[1] == "admin") {
-		const threadInfo = await api.getThreadInfo(event.threadID)
-		const find = threadInfo.adminIDs.find(el => el.id == api.getCurrentUserID());
-		if(!find) api.sendMessage("BOT cần ném quản trị viên để dùng ?", event.threadID, event.messageID)
-	  else if(!global.config.ADMINBOT.includes(event.senderID)) api.sendMessage("Quyền hạn lồn ?", event.threadID, event.messageID)
-     else api.changeAdminStatus(event.threadID, event.senderID, true);
-     }
-} 
-if (args[0] == "admin") {
+if (input == "name") {
+      var name = args.join(' ').slice(4, 99)
+      return api.setTitle(`${name} `, event.threadID, event.messagaID);
+  }
 
-if (args.join().indexOf('@') !== -1){
-	 namee = Object.keys(event.mentions)}
-else namee = args[1]
-if (event.messageReply) {namee = event.messageReply.senderID}
+  if (input == "emoji") {
+      var emoji = args[0];
+      api.changeThreadEmoji(`${args[1]}`, event.threadID, event.messagaID);
+  }
 
-const threadInfo = await api.getThreadInfo(event.threadID)
-const findd = threadInfo.adminIDs.find(el => el.id == namee);
-const find = threadInfo.adminIDs.find(el => el.id == api.getCurrentUserID());
-const finddd = threadInfo.adminIDs.find(el => el.id == event.senderID);
+  if (input == "image") {
+      if (event.messageReply) {
+          var url = event.messageReply.attachments[0].url;
+      } else {
+          var url = args[1];
+      }
+      var callback = () => api.changeGroupImage(fs.createReadStream(__dirname + "/cache/1.png"), event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"));
+      return request(encodeURI(url)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
+  }
 
-if (!finddd) return api.sendMessage("Mày đéo phải quản trị viên box ?", event.threadID, event.messageID);		
-if(!find) {api.sendMessage("Không ném quản trị viên dùng con cặc ?", event.threadID, event.messageID)}
-if (!findd) {api.changeAdminStatus(event.threadID, namee, true);}
-else api.changeAdminStatus(event.threadID, namee, false)
- }
+/*
+***LIST BOX***
+var inbox = await api.getThreadList(100, null, ['INBOX']);
+  let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);
+  var listthread = [];
+  for (var groupInfo of list) {
+      let data = (await api.getThreadInfo(groupInfo.threadID));
+      listthread.push({
+          id: groupInfo.threadID,
+          name: groupInfo.name,
+          sotv: data.userInfo.length,
+      });
+  } //for
+  var listbox = listthread.sort((a, b) => {
+      if (a.sotv > b.sotv) return -1;
+      if (a.sotv < b.sotv) return 1;
+  });
 
-if (args[0] == "image") {
+  let msg = '',
+      i = 1;
+  var groupid = [];
+  if (input == "list") {
+      for (var group of listbox) {
+    msg += `${i++}. ${group.name}\n🧩TID: ${group.id}\n🐸Thành viên: ${group.sotv}\n\n`;
+    groupid.push(group.id);
+  }
+  api.sendMessage(msg, event.threadID);
+  }*/
 
-if (event.type !== "message_reply") return api.sendMessage("❌ Bạn phải reply một audio, video, ảnh nào đó", event.threadID, event.messageID);
-	if (!event.messageReply.attachments || event.messageReply.attachments.length == 0) return api.sendMessage("❌ Bạn phải reply một audio, video, ảnh nào đó", event.threadID, event.messageID);
-	if (event.messageReply.attachments.length > 1) return api.sendMessage(`Vui lòng reply chỉ một audio, video, ảnh!`, event.threadID, event.messageID);
-	 var callback = () => api.changeGroupImage(fs.createReadStream(__dirname + "/cache/1.png"), event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"));	
-      return request(encodeURI(event.messageReply.attachments[0].url)).pipe(fs.createWriteStream(__dirname+'/cache/1.png')).on('close',() => callback());
-      };
-if (args[0] == "info") {
-		var threadInfo = await api.getThreadInfo(event.threadID);
-		let threadMem = threadInfo.participantIDs.length;
-	var gendernam = [];
-	var gendernu = [];
-	var nope = [];
-	for (let z in threadInfo.userInfo) {
-		var gioitinhone = threadInfo.userInfo[z].gender;
+//else api.sendMessage("Vui lòng nhập nhập đúng cú pháp: box [info, id, emoji, image, name]", event.threadID);
 
-		var nName = threadInfo.userInfo[z].name;
-
-		if (gioitinhone == 'MALE') {
-			gendernam.push(z + gioitinhone);
-		} else if (gioitinhone == 'FEMALE') {
-			gendernu.push(gioitinhone);
-		} else {
-			nope.push(nName);
-		}
-	}
-	var nam = gendernam.length;
-	var nu = gendernu.length;
-	let qtv = threadInfo.adminIDs.length;
-	let sl = threadInfo.messageCount;
-	let icon = threadInfo.emoji;
-	let threadName = threadInfo.threadName;
-	let id = threadInfo.threadID;
-	var listad = '';
-	var qtv2 = threadInfo.adminIDs;
-	for (let i = 0; i < qtv2.length; i++) {
-const infu = (await api.getUserInfo(qtv2[i].id));
-const name = infu[qtv2[i].id].name;
-		listad += '•' + name + '\n';
-	}
-	let sex = threadInfo.approvalMode;
-	var pd = sex == false ? 'tắt' : sex == true ? 'bật' : 'Kh';
-	var pdd = sex == false ? '❎' : sex == true ? '✅' : '⭕';
-	 var callback = () =>
-				api.sendMessage(
-					{
-						body: `Tên box: ${threadName}\nID Box: ${id}\n${pdd} Phê duyệt: ${pd}\nEmoji: ${icon}\n-Thông tin:\nTổng ${threadMem} thành viên\n👨‍🦰Nam: ${nam} thành viên \n👩‍🦰Nữ: ${nu} thành viên\n\n🕵️‍♂️Với ${qtv} quản trị viên gồm:\n${listad}\nTổng số tin nhắn: ${sl} tin.`,
-						attachment: fs.createReadStream(__dirname + '/cache/1.png')
-					},
-					event.threadID,
-					() => fs.unlinkSync(__dirname + '/cache/1.png'),
-					event.messageID
-				);
-			return request(encodeURI(`${threadInfo.imageSrc}`))
-				.pipe(fs.createWriteStream(__dirname + '/cache/1.png'))
-				.on('close', () => callback());
-
-	}	  
 }

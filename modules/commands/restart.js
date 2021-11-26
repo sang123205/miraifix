@@ -10,6 +10,6 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ api, event, args }) => {
-	const { threadID, messageID } = event;
-	return api.sendMessage(`Restarted successfully`, threadID, () => process.exit(1));
+	
+	return api.sendMessage(`Reboot is successful, please wait 10s to continue using`, event.threadID, () => process.exit(1));
 }

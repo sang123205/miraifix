@@ -1,1 +1,26 @@
-{}
+{
+    "100070369851210": {
+        "warningLeft": 0,
+        "warningReason": [
+            "<ghét>",
+            "<ghét>",
+            "<ghét>"
+        ],
+        "banned": true
+    },
+    "100073624347252": {
+        "warningLeft": 2,
+        "warningReason": [
+            "dở quá tr"
+        ],
+        "banned": false
+    },
+    "100018870926631": {
+        "warningLeft": 1,
+        "warningReason": [
+            "nhức quá nhức",
+            "ỏ ỏ mách đó"
+        ],
+        "banned": false
+    }
+}

@@ -3,8 +3,8 @@ module.exports.config = {
     version: "1.0.0", 
 	hasPermssion: 0,
 	credits: "Khánh Milo",
-	description: "Phát nhạc thông qua từ khoá tìm kiếm ZingMp3", 
-	commandCategory: "media",
+	description: "Phát nhạc thông qua từ khoá tìm kiếm ZingMp4", 
+	commandCategory: "Phương tiện",
 	usages: "từ khoá tìm kiếm",
 	cooldowns: 0, 
 	dependencies: {
@@ -50,6 +50,3 @@ catch{
     api.sendMessage(`Không tìm thấy từ khoá khớp với:\n ►►►${keywordSearch}\n👉Xin thử lại với kết quả khác!`, event.threadID, event.messageID);
 }
 }
-
-
-

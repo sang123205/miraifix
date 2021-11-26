@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "Lấy url download từ video, audio được gửi từ nhóm",
-	commandCategory: "other",
+	commandCategory: "General",
 	usages: "getLink",
 	cooldowns: 5,
 };

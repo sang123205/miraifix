@@ -29,7 +29,7 @@ const time = process.uptime(),
 	let ext = res.data.url.substring(res.data.url.lastIndexOf(".") + 1);
 	let callback = function () {
 					api.sendMessage({
-                                                body: `Hiện tại đang là: ${gio} và bot của Khoa đã hoạt động được ${hours} giờ ${minutes} phút ${seconds} giây.\n🐳Prefix: ${global.config.PREFIX}\n🐳Version: 1.2.15\n🐳Tổng người dùng: ${global.data.allUserID.length}\n🐳Tổng nhóm: ${global.data.allThreadID.length}\n🐳Cpu đang sử dụng: ${pidusage.cpu.toFixed(1)}\n🐳Ram đang sử dụng: ${byte2mb(pidusage.memory)}\n🐳Ping: ${Date.now() - timeStart}ms`,
+                                                body: `Hiện tại đang là: ${gio} và bot của SángBiz đã hoạt động được ${hours} giờ ${minutes} phút ${seconds} giây.\n🐳Prefix: ${global.config.PREFIX}\n🐳Version: 1.2.15\n🐳Tổng người dùng: ${global.data.allUserID.length}\n🐳Tổng nhóm: ${global.data.allThreadID.length}\n🐳Cpu đang sử dụng: ${pidusage.cpu.toFixed(1)}\n🐳Ram đang sử dụng: ${byte2mb(pidusage.memory)}\n🐳Ping: ${Date.now() - timeStart}ms`,
 						attachment: fs.createReadStream(__dirname + `/cache/anh.${ext}`)
 					}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/anh.${ext}`), event.messageID);
 				};

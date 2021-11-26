@@ -10,8 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "amlich": "^0.0.2",
+    "chem-eb": "^0.1.13",
+    "discord.js": "^13.3.1",
     "facebook-tools": "^2.0.0",
     "fast-speedtest-api": "^0.3.2",
+    "gif-frames": "^1.0.1",
+    "gifencoder": "^2.0.1",
     "node-superfetch": "^0.2.3",
     "pidusage": "^2.0.21",
     "qrcode": "^1.4.4",

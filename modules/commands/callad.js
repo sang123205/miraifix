@@ -27,7 +27,7 @@ module.exports.handleReply = async function({ api, args, event, handleReply, Use
      }
    break;}
     case "calladmin": {
-      api.sendMessage({ body: `⚡Phản hồi từ admin ${name} đến bạn:\n--------\n${event.body}\n--------\n»💬Phản hồi tin nhắn này để tiếp tục gửi báo cáo về admin`, mentions: [{tag: name, id : event.senderID}]}, handleReply.id, (e, data) => global.client.handleReply.push({
+      api.sendMessage({ body: `🧧Phản hồi từ admin ${name} đến bạn:\n--------\n${event.body}\n--------\n»🖱Phản hồi tin nhắn này để tiếp tục gửi báo cáo về admin`, mentions: [{tag: name, id : event.senderID}]}, handleReply.id, (e, data) => global.client.handleReply.push({
   name: this.config.name,
   author: event.senderID,
   messageID: data.messageID,
@@ -62,9 +62,9 @@ module.exports.run = async function({ api, event, args, Users }) {
     () => {
     var idad = global.config.ADMINBOT;
     for(let ad of idad) {
-        api.sendMessage(`⚡Báo cáo từ: ${name}\n⚡Box: ${namethread}\n⚡ID box: ${idbox}\n----------------\n⚠️Lỗi: ${args.join(
+        api.sendMessage(`⛱Báo cáo từ: ${name}\n💤Box: ${namethread}\n💦ID box: ${idbox}\n----------------\n❗Lỗi: ${args.join(
             " "
-          )}\n----------------\n⚡Time: ${gio}`,
+          )}\n----------------\n🌪Time: ${gio}`,
           ad, (error, info) =>
             global.client.handleReply.push({
               name: this.config.name,

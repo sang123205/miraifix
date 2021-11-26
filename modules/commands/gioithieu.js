@@ -11,6 +11,6 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ api, event, args, client, utils }) => {
-	if (args.join() == "") {api.sendMessage("|==== Bảng thông tin Gravity falls ====|\nNgười chạy bot: Khoa\n© Gravity Falls 2021 👉 Do not reup\nCảm ơn mọi người đã sử dụng bot của mình\nP/s: Chúc mọi người một ngày tốt lành",event.threadID, event.messageID);
+	if (args.join() == "") {api.sendMessage("|==== Bảng thông tin Gravity falls ====|\nNgười chạy bot: QuangProVip\n© Gravity Falls 2021 👉 Do not reup\nCảm ơn mọi người đã sử dụng bot của mình\nP/s: Chúc mọi người một ngày tốt lành",event.threadID, event.messageID);
 	}
 }

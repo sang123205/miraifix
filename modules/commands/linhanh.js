@@ -2,7 +2,7 @@ module.exports.config = {
   name: "linhanh",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "Thắng",
+  credits: "Quốc Anh",
   description: "Hàng đặt riêng của bạn chủ bot,nếu thích thì cứ xài ^^",
   commandCategory: "random-img",
   usages: "linhanh",
@@ -49,6 +49,6 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.postimg.cc/bwynNDvx/240497080-371863711091066-3650837696998993956-n.jpg",
 "https://i.postimg.cc/s28GcT4m/240996627-3018074361783520-1374492060414132441-n.jpg",
      ];
-     var callback = () => api.sendMessage({body:`Hàng đặt riêng của bạn chủ bot ^^`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));  
+     var callback = () => api.sendMessage({body:`Hàng đặt riêng của bạn chủ Bot cho bạn 😘`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));  
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
    };

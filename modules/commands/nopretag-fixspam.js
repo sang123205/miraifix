@@ -11,7 +11,7 @@ module.exports.config = {
 };
 module.exports.event = async({ api, event, Users }) => {
     var { threadID, messageID, senderID } = event;
-    if (senderID !== "100038379006171") { //chỗ này thay id bot vào
+    if (senderID !== "100024624489689") { //chỗ này thay id bot vào
         var mention = Object.keys(event.mentions)[0];
         let tag = event.mentions[mention];
         let output = "Spam bot an lon à"; //câu mà bot rep

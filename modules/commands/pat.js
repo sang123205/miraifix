@@ -5,7 +5,7 @@ module.exports.config = {
   name: "vỗ",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "HTHB",
+  credits: "Quốc Anh",
   description: "vỗ người bạn tag",
   commandCategory: "hình ảnh",
   usages: "vỗ [tag người bạn vỗ]",
@@ -31,7 +31,7 @@ module.exports.run = function({
     let tag = event.mentions[mention].replace("@", "");
     let callback = function() {
       api.sendMessage({
-        body: tag + ", Ê!! ",
+        body: tag + ", Ê Nàyyyyyyyyyyyyyyyyyyyyyyyyyyy!! ",
         mentions: [{
           tag: tag,
           id: Object.keys(event.mentions)[0]

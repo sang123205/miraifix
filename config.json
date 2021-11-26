@@ -6,19 +6,21 @@
     "allowInbox": true,
     "autoClean": false,
     "commandDisabled": [
-        "bank.js",
-        "prefix.js"
+        "bank.js"
     ],
     "eventDisabled": [],
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
-    "BOTNAME": "HCl",
+    "BOTNAME": "FBI",
     "PREFIX": "/",
     "ADMINBOT": [
         "100045223667485",
         "",
-        ""
+        "",
+        "100072545180649",
+        "100074293072000",
+        "100052712674171"
     ],
     "DATABASE": {
         "sqlite": {
@@ -31,10 +33,9 @@
         "listenEvents": true,
         "pauseLog": true,
         "logLevel": "error",
-        "selfListen": true,
-        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15"
+        "selfListen": true
     },
-    "version": "1.2.14",
+    "version": "1.2.9",
     "checktt": {
         "maxColumn": 10
     },
@@ -50,7 +51,7 @@
         "WOLFRAM": "T8J8YV-H265UQ762K"
     },
     "rank": {
-        "APIKEY": "571752207151901|AC-zG86sv6U6kpnT0_snIHBOHJc"
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "rankup": {
         "autoUnsend": true,
@@ -63,11 +64,11 @@
         "SAUCENAO_API": "61e802b1478f8e85198f28ed6ac2de6efe5d0a41"
     },
     "sing": {
-        "YOUTUBE_API": "AIzaSyBqdcU2i-YQKJMGr3OZD_qKHcd_v4DNUTs",
+        "YOUTUBE_API": "AIzaSyCd6-7GSzbQq1ZslDrXGdh6BRubMRY7MFw",
         "SOUNDCLOUD_API": "M4TSyS6eV0AcMynXkA3qQASGcOFQTWub"
     },
     "video": {
-        "YOUTUBE_API": "AIzaSyBqdcU2i-YQKJMGr3OZD_qKHcd_v4DNUTs"
+        "YOUTUBE_API": "AIzaSyCd6-7GSzbQq1ZslDrXGdh6BRubMRY7MFw"
     },
     "weather": {
         "OPEN_WEATHER": "1f1f588f7499fbab5e66c2abbb368703"
@@ -90,7 +91,7 @@
         "bitlyAPI": ""
     },
     "sim": {
-        "APIKEY": "Meew_6DLjqmLA1hXZN0nuPQNjWmBNzQLEYY"
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "cave": {
         "cooldownTime": 1000000
@@ -99,7 +100,7 @@
         "enable": true
     },
     "img": {
-        "APIKEY": "Meew_6DLjqmLA1hXZN0nuPQNjWmBNzQLEYY"
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "menu": {
         "autoUnsend": true,
@@ -107,19 +108,19 @@
         "unsendMessageAfter": 5
     },
     "covid": {
-        "APIKEY": ""
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "hitbutt": {
-        "APIKEY": ""
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "linkword": {
-        "APIKEY": ""
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "slap": {
-        "APIKEY": ""
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "sortword": {
-        "APIKEY": ""
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
     },
     "surprise": {
         "log": true,
@@ -128,6 +129,24 @@
         "delThread": ""
     },
     "teach": {
-        "APIKEY": ""
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
+    },
+    "lamviec": {
+        "cooldownTime": 1200000
+    },
+    "nameJP": {
+        "APIKEY": "mi451266190"
+    },
+    "simvoice": {
+        "APIKEY": "Meew_fpFjGSt1Z1sNfmCCBgAiUj4rB7Tacz"
+    },
+    "tuongtac": {
+        "maxColumn": 400
+    },
+    "working": {
+        "cooldownTime": 1200000
+    },
+    "ytbmp4": {
+        "YOUTUBE_API": "AIzaSyCd6-7GSzbQq1ZslDrXGdh6BRubMRY7MFw"
     }
 }

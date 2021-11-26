@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "toilet",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "NTKhang",
+	credits: "Quốc Anh",
 	description: "Toilet 🚽",
 	commandCategory: "hình ảnh",
 	usages: "rank",
@@ -41,7 +41,7 @@ try {
 	ctx.drawImage(await Canvas.loadImage(avatar), 135, 350, 205, 205);
 	const imageBuffer = canvas.toBuffer();
 	fs.writeFileSync(path_toilet,imageBuffer);
-	 api.sendMessage({attachment: fs.createReadStream(path_toilet, {'highWaterMark': 128 * 1024}), body: "..."}, event.threadID, () => fs.unlinkSync(path_toilet), event.messageID);
+	 api.sendMessage({attachment: fs.createReadStream(path_toilet, {'highWaterMark': 128 * 1024}), body: "Mày đẹp chưa"}, event.threadID, () => fs.unlinkSync(path_toilet), event.messageID);
 }
 catch(e) {api.sendMessage(e.stack, event.threadID )}
 }

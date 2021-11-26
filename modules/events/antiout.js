@@ -1,22 +1,36 @@
+/**
+* @author ProCoderMew
+* @warn Do not edit code or edit credits
+*/
+
 module.exports.config = {
     name: "antiout",
     eventType: ["log:unsubscribe"],
-    version: "0.0.1",
-    credits: "DungUwU",
-    description: "Listen events"
+    version: "1.0.7",
+    credits: "ProCoderMew",
+    description: "Listen events",
+    dependencies: {
+        "path": ""
+    }
 };
 
-module.exports.run = async({ event, api, Threads, Users }) => {
-    let data = (await Threads.getData(event.threadID)).data || {};
-    if (!data.antiout) return;
-    if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
-    const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
-    const type = (event.author == event.logMessageData.leftParticipantFbId) ? "tự rời" : "bị quản trị viên đá";
-    if (type == "tự rời") {
-        api.addUserToGroup(event.logMessageData.leftParticipantFbId, event.threadID, (error, info) => {
-            if (error) {
-                api.sendMessage(`[ ANTIOUT ] Không thể thêm lại thành viên ${name} vào nhóm :( `, event.threadID)
-            } else api.sendMessage(`[ ANTIOUT ] Đã thêm ${name} vào nhóm vì đã rời khỏi nhóm mà không có sự cho phép của quản trị viên `, event.threadID);
-        })
+module.exports.run = async function ({ api, event, Users }) {
+    const { resolve } = global.nodemodule["path"];
+    const path = resolve(__dirname, '../commands', 'cache', 'meewmeew.json');
+    const { antiout } = require(path);
+    const { logMessageData, author, threadID } = event;
+    const id = logMessageData.leftParticipantFbId;
+    if (author == id && id != api.getCurrentUserID()) {
+        const name = await Users.getNameUser(id) || "Người dùng Facebook";
+        if (antiout.hasOwnProperty(threadID) && antiout[threadID] == true) {
+            try {
+                await api.addUserToGroup(id, threadID);
+                return api.sendMessage(`Đã thêm ${name} vào lại nhóm .`);
+            }
+            catch (e) {
+                return api.sendMessage(`Không thể thêm ${name} vừa out vào lại nhóm.`, threadID);
+            }
+        }
     }
+    return;
 }

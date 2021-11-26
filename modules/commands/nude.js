@@ -1,4 +1,4 @@
-﻿module.exports.config = {
+module.exports.config = {
   name: "nude",
   version: "1.0.1",
   hasPermssion: 0,

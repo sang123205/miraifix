@@ -4,8 +4,8 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: 'NTKhang',
 	description: '',
-	commandCategory: 'admin',
-	usages: 'givefile',
+	commandCategory: 'Hệ thống admin-bot',
+	usages: 'file',
 	cooldowns: 5,
 	dependencies: {"fs-extra":""}
 };

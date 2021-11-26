@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: "CatalizCS",
 	description: "Đổi biệt danh của toàn bộ nhóm",
-	commandCategory: "system",
+	commandCategory: "group",
 	usages: "[Biệt danh cần đặt]",
 	cooldowns: 20,
 };

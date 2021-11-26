@@ -1,32 +1,13 @@
 module.exports.config = {
-  name: "ghép",
-  version: "1.0.0", 
+  name: "ghep",
+  version: "2.0.0", 
   hasPermssion: 0,
-  credits: "quên, fix by Jukie~",
+  credits: "D-Jukie (Xuyên get)",
   description: "Ghép đôi",
-  commandCategory: "Game", 
-  usages: "ghép", 
-  cooldowns: 10,
-  dependencies: [] 
+  commandCategory: "Giải trí", 
+  usages: "", 
+  cooldowns: 10
 };
-module.exports.run = async function({ api, event, Users, Currencies }) {
-        const axios = global.nodemodule["axios"];
-        const fs = global.nodemodule["fs-extra"];
-        var data = await Currencies.getData(event.senderID);
-        var money = data.money
-        if(money = 1000, money >1000) api.sendMessage("Hông có tiền thì đừng mơ mà ghép 😏")
-        else {
-var _0xe51b=["\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72","\x6E\x61\x6D\x65","\x73\x65\x6E\x64\x65\x72\x49\x44","\x67\x65\x74\x44\x61\x74\x61","\x74\x68\x72\x65\x61\x64\x49\x44","\x67\x65\x74\x54\x68\x72\x65\x61\x64\x49\x6E\x66\x6F","\x70\x61\x72\x74\x69\x63\x69\x70\x61\x6E\x74\x49\x44\x73","\x6C\x65\x6E\x67\x74\x68","\x70\x75\x73\x68"];var tle=Math[_0xe51b[1]](Math[_0xe51b[0]]()* 101);var namee=( await Users[_0xe51b[4]](event[_0xe51b[3]]))[_0xe51b[2]];let loz= await api[_0xe51b[6]](event[_0xe51b[5]]);var emoji=loz[_0xe51b[7]];var id=emoji[Math[_0xe51b[1]](Math[_0xe51b[0]]()* emoji[_0xe51b[8]])];var name=( await Users[_0xe51b[4]](id))[_0xe51b[2]];var arraytag=[];arraytag[_0xe51b[9]]({id:event[_0xe51b[3]],tag:namee});arraytag[_0xe51b[9]]({id:id,tag:name})
-
-  
-        let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: "arraybuffer" } )).data; 
-            fs.writeFileSync( __dirname + "/cache/avt.png", Buffer.from(Avatar, "utf-8") );
-        let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: "arraybuffer" } )).data;
-            fs.writeFileSync( __dirname + "/cache/avt2.png", Buffer.from(Avatar2, "utf-8") );
-        var imglove = [];
-              imglove.push(fs.createReadStream(__dirname + "/cache/avt.png"));
-              imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
-        var msg = {body: `🐳Ghép đôi thành công!\n💞Tỉ lệ hợp đôi: ${tle}%\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}
-        return api.sendMessage(msg, event.threadID, event.messageID)
-      }
+module.exports.run = async function({ api, event,Threads, Users }) {
+function _0x21e2(){var _0x31fb78=['utf-8','sendMessage','name','/picture?height=1500&width=1500&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9','threadID','992SDbFMi','832001vJakqK','data','1100436dfkLzB','3252DDYxLl','6897265VuTdgQ','participantIDs','threadInfo','4055586dPBHjN','senderID','axios','fs-extra','7TmSJmJ','getCurrentUserID','https://graph.facebook.com/','writeFileSync','push','/cache/avt2.png','/cache/avt.png','get','https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/220px-Heart_coraz%C3%B3n.svg.png','76689qLisGe','/cache/giflove.png','arraybuffer','floor','filter','getData','from','1066644VRhsSM','createReadStream','random'];_0x21e2=function(){return _0x31fb78;};return _0x21e2();}var _0x56c6dc=_0x5f17;(function(_0x346028,_0x3f60c3){var _0x5ecfd6=_0x5f17,_0x346462=_0x346028();while(!![]){try{var _0x50d794=parseInt(_0x5ecfd6(0xc6))/0x1+parseInt(_0x5ecfd6(0xe1))/0x2+-parseInt(_0x5ecfd6(0xc9))/0x3+-parseInt(_0x5ecfd6(0xc8))/0x4+parseInt(_0x5ecfd6(0xca))/0x5+-parseInt(_0x5ecfd6(0xcd))/0x6*(parseInt(_0x5ecfd6(0xd1))/0x7)+-parseInt(_0x5ecfd6(0xc5))/0x8*(parseInt(_0x5ecfd6(0xda))/0x9);if(_0x50d794===_0x3f60c3)break;else _0x346462['push'](_0x346462['shift']());}catch(_0x3f5552){_0x346462['push'](_0x346462['shift']());}}}(_0x21e2,0xb3b30));const axios=global['nodemodule'][_0x56c6dc(0xcf)],fs=global['nodemodule'][_0x56c6dc(0xd0)];var {participantIDs}=(await Threads[_0x56c6dc(0xdf)](event['threadID']))[_0x56c6dc(0xcc)],tle=Math[_0x56c6dc(0xdd)](Math['random']()*0x65),namee=(await Users[_0x56c6dc(0xdf)](event[_0x56c6dc(0xce)]))[_0x56c6dc(0xe6)];function _0x5f17(_0x1f7030,_0x221b56){var _0x21e26f=_0x21e2();return _0x5f17=function(_0x5f171a,_0x30f8f9){_0x5f171a=_0x5f171a-0xc5;var _0x5e8f1a=_0x21e26f[_0x5f171a];return _0x5e8f1a;},_0x5f17(_0x1f7030,_0x221b56);}const botID=api[_0x56c6dc(0xd2)](),listUserID=event[_0x56c6dc(0xcb)][_0x56c6dc(0xde)](_0x18d036=>_0x18d036!=botID&&_0x18d036!=event[_0x56c6dc(0xce)]);var id=listUserID[Math['floor'](Math[_0x56c6dc(0xe3)]()*listUserID['length'])],name=(await Users['getData'](id))[_0x56c6dc(0xe6)],arraytag=[];arraytag[_0x56c6dc(0xd5)]({'id':event[_0x56c6dc(0xce)],'tag':namee}),arraytag[_0x56c6dc(0xd5)]({'id':id,'tag':name});let Avatar=(await axios['get'](_0x56c6dc(0xd3)+event['senderID']+_0x56c6dc(0xe7),{'responseType':_0x56c6dc(0xdc)}))['data'];fs['writeFileSync'](__dirname+_0x56c6dc(0xd7),Buffer[_0x56c6dc(0xe0)](Avatar,_0x56c6dc(0xe4)));let gifLove=(await axios[_0x56c6dc(0xd8)](_0x56c6dc(0xd9),{'responseType':'arraybuffer'}))[_0x56c6dc(0xc7)];fs[_0x56c6dc(0xd4)](__dirname+_0x56c6dc(0xdb),Buffer[_0x56c6dc(0xe0)](gifLove,_0x56c6dc(0xe4)));let Avatar2=(await axios[_0x56c6dc(0xd8)](_0x56c6dc(0xd3)+id+_0x56c6dc(0xe7),{'responseType':'arraybuffer'}))['data'];fs['writeFileSync'](__dirname+_0x56c6dc(0xd6),Buffer['from'](Avatar2,'utf-8'));var imglove=[];imglove['push'](fs[_0x56c6dc(0xe2)](__dirname+_0x56c6dc(0xdb))),imglove[_0x56c6dc(0xd5)](fs[_0x56c6dc(0xe2)](__dirname+_0x56c6dc(0xd7))),imglove[_0x56c6dc(0xd5)](fs['createReadStream'](__dirname+'/cache/avt2.png'));var msg={'body':'⚡️Ghép\x20đôi\x20thành\x20công!\x0a⚡️Tỉ\x20lệ\x20hợp\x20đôi:\x20'+tle+'%\x0a'+namee+'\x20'+'💓'+'\x20'+name,'mentions':arraytag,'attachment':imglove};return api[_0x56c6dc(0xe5)](msg,event[_0x56c6dc(0xe8)],event['messageID']);
 }

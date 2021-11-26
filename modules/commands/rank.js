@@ -68,8 +68,8 @@ module.exports.makeRankCard = async (data) => {
 	let rankCard = await Canvas.loadImage(dirImage);
 	const pathImg = __root + `/rank_${id}.png`;
 	
-	var expWidth = (expCurrent * 610) / expNextLevel;
-	if (expWidth > 610 - 19.5) expWidth = 610 - 19.5;
+	var expWidth = (expCurrent * 615) / expNextLevel;
+	if (expWidth > 615 - 18.5) expWidth = 615 - 18.5;
 	
 	let avatar = await request.get(`https://graph.facebook.com/${id}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`);
 
@@ -79,39 +79,39 @@ module.exports.makeRankCard = async (data) => {
 	const ctx = canvas.getContext("2d");
 
 	ctx.drawImage(rankCard, 0, 0, canvas.width, canvas.height);
-	ctx.drawImage(await Canvas.loadImage(avatar), 20, 75, 200, 200);
+	ctx.drawImage(await Canvas.loadImage(avatar), 45, 50, 180, 180);
 
 	ctx.font = `bold 36px Manrope`;
-	ctx.fillStyle = "#FFFFFF";
+	ctx.fillStyle = "#FFFF00";
 	ctx.textAlign = "start";
 	ctx.fillText(name, 270, 164);
 	ctx.font = `36px Manrope`;
-	ctx.fillStyle = "#FFFFFF";
+	ctx.fillStyle = "#FF66FF";
 	ctx.textAlign = "center";
 
-	ctx.font = `bold 38px Manrope`;
-	ctx.fillStyle = "#FF0000";
+	ctx.font = `bold 32px Manrope`;
+	ctx.fillStyle = "#00FF00";
 	ctx.textAlign = "end";
-	ctx.fillText(level, 934 - 68, 82);
-	ctx.fillStyle = "#FF0000";
+	ctx.fillText(level, 934 - 55, 82);
+	ctx.fillStyle = "#EE0000";
 	ctx.fillText("Lv.", 934 - 55 - ctx.measureText(level).width - 10, 82);
 
-	ctx.font = `bold 36px Manrope`;
-	ctx.fillStyle = "#FF0000";
+	ctx.font = `bold 32px Manrope`;
+	ctx.fillStyle = "#3399CC";
 	ctx.textAlign = "end";
 	ctx.fillText(rank, 934 - 55 - ctx.measureText(level).width - 16 - ctx.measureText(`Lv.`).width - 25, 82);
-	ctx.fillStyle = "#FF0000";
+	ctx.fillStyle = "#FFFFFF";
 	ctx.fillText("#", 934 - 55 - ctx.measureText(level).width - 16 - ctx.measureText(`Lv.`).width - 16 - ctx.measureText(rank).width - 16, 82);
 
-	ctx.font = `bold 32px Manrope`;
-	ctx.fillStyle = "#00FF33";
+	ctx.font = `bold 26px Manrope`;
+	ctx.fillStyle = "#FF99FF";
 	ctx.textAlign = "start";
 	ctx.fillText("/ " + expNextLevel, 710 + ctx.measureText(expCurrent).width + 10, 164);
-	ctx.fillStyle = "#99FF33";
+	ctx.fillStyle = "#33FFFF";
 	ctx.fillText(expCurrent, 710, 164);
 
 	ctx.beginPath();
-	ctx.fillStyle = "#CC99FF";
+	ctx.fillStyle = "#4283FF";
 	ctx.arc(257 + 18.5, 147.5 + 18.5 + 36.25, 18.5, 1.5 * PI, 0.5 * PI, true);
 	ctx.fill();
 	ctx.fillRect(257 + 18.5, 147.5 + 36.25, expWidth, 37.5);
@@ -122,6 +122,7 @@ module.exports.makeRankCard = async (data) => {
 	fs.writeFileSync(pathImg, imageBuffer);
 	return pathImg;
 }
+
 module.exports.circle = async (image) => {
     const jimp = global.nodemodule["jimp"];
 	image = await jimp.read(image);

@@ -11,7 +11,7 @@ module.exports.config = {
 
 module.exports.languages = {
 	"vi": {
-		"sotienbanthan": "Số tiền bạn đang có: %1$",
+		"sotienbanthan": "Trong ATM Của Bạn Đang có : %1💵",
 		"sotiennguoikhac": "Số tiền của %1 hiện đang có là: %2$"
 	},
 	"en": {

@@ -3,7 +3,7 @@ module.exports.config = {
   version: "1.0.0",
   hasPermssion: 0,
   credits: "HungCho",
-  description: "Kiểm tra thông tin nhs chat.",
+  description: "Random ảnh black pink.",
   commandCategory: "Hình Ảnh",
   usages: "blackpink",
   cooldowns: 5,

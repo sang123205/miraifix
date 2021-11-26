@@ -15,11 +15,11 @@ module.exports.handleEvent = function({ api, event, args, Threads }) {
   const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
   var idgr = `${event.threadID}`;
 
-  var tl = ["chào bạn tôi là bot của Khoa", "bạn kêu tôi có việc gì?", "tôi yêu bạn vai lon", "Yêu em <3", "Hi, chào con vợ bé:3", "Vợ gọi có việc gì không?", "Sử dụng callad để liên lạc với admin!", "Em là bot cute nhất hành tinh", "Nói gì thế con lợn", "Em đây~~~~"];
+  var tl = ["chào bạn tôi là bot của Tuan Linh", "bạn kêu tôi có việc gì?", "tôi yêu bạn vai lon", "Yêu em <3", "Hi, chào con vợ bé:3", "Vợ gọi có việc gì không?", "Sử dụng callad để liên lạc với admin!", "Em là bot cute nhất hành tinh", "Nói gì thế con lợn", "Em đây~~~~"];
   var rand = tl[Math.floor(Math.random() * tl.length)]
 
-  if ((event.body.toLowerCase() == "bot out")) {
-    return api.sendMessage("Tạm biệt mng ><", threadID, () =>
+  if ((event.body.toLowerCase() == "bot lồn")) {
+    return api.sendMessage("Đã phát hiện hành động chửi bot \nHành động đã được báo cáo cho Admin \nBot sẽ out nhóm !\nHãy liên hệ admin để thêm bot lại \n Fb : Tuan Linh \n Link FB ADMIN nè : https://www.facebook.com/profile.php?id=100073137742165", threadID, () =>
       api.removeUserFromGroup(api.getCurrentUserID(), threadID));
   };
 
@@ -40,17 +40,17 @@ module.exports.handleEvent = function({ api, event, args, Threads }) {
   };
 
    if ((event.body.toLowerCase() == "bot cút")) {
-    return api.sendMessage("À ừ vậy thôi tao đi cảm ơn bọn mày trong thời gian qua cùng tao vui vẻ....vậy thôi tao đi pp ☺😊", threadID, () =>
+    return api.sendMessage("À ừ vậy thôi tao đi cảm ơn bọn mày trong thời gian qua cùng tao vui vẻ....vậy thôi tao đi pp 😊", threadID, () =>
       api.removeUserFromGroup(api.getCurrentUserID(), threadID));
   };
 
   if ((event.body.toLowerCase() == "bot lon")) {
-    return api.sendMessage("Thành viên đã cố ý chửi bot, do đó đã vi phạm luật bot nên bot sẽ out và muốn add lại thì xin liên hệ qua admin qua Fb: Thắng để được hỗ trợ\nLink fb nè: https://www.facebook.com/thanghokngu1", threadID, () =>
+    return api.sendMessage("Thành viên đã cố ý chửi bot, do đó đã vi phạm luật bot nên bot sẽ out và muốn add lại thì xin liên hệ qua admin qua Fb: Thắng để được hỗ trợ\nLink fb nè: https://www.facebook.com/QuangGoodBoy", threadID, () =>
       api.removeUserFromGroup(api.getCurrentUserID(), threadID));
   };
 
   if ((event.body.toLowerCase() == "bot óc chó")) {
-    return api.sendMessage("Thành viên đã cố ý chửi bot, do đó đã vi phạm luật bot nên bot sẽ out và muốn add lại thì xin liên hệ qua admin qua Fb:Thắng để được hỗ trợ\nLink fb nè: https://www.facebook.com/thanghokngu1", threadID, () =>
+    return api.sendMessage("Thành viên đã cố ý chửi bot, do đó đã vi phạm luật bot nên bot sẽ out và muốn add lại thì xin liên hệ qua admin qua Fb:Tuan Linh để được hỗ trợ\nLink fb nè: https://www.facebook.com/profile.php?id=100073137742165", threadID, () =>
       api.removeUserFromGroup(api.getCurrentUserID(), threadID));
   };
 
@@ -66,8 +66,8 @@ module.exports.handleEvent = function({ api, event, args, Threads }) {
     return api.sendMessage("Bất hiếu cha sinh mẹ đẻ mà mày nói thế là hỏng người rồi", threadID);
   };
 
-  if ((event.body.toLowerCase() == "@Vũ Thắng") || (event.body.toLowerCase() == "@Vũ Thắng")) {
-    return api.sendMessage("Ai kêu chủ tao đấy, mà làm ơn đừng tag anh ấy mà hãy liên hệ qua Fb: https://www.facebook.com/profile.php?id=100029848123405 ", threadID);
+  if ((event.body.toLowerCase() == "@Tuan Linh") || (event.body.toLowerCase() == "@Tuan Linh")) {
+    return api.sendMessage("Ai kêu chủ tao đấy, mà làm ơn đừng tag anh ấy mà hãy liên hệ qua Fb: https://www.facebook.com/profile.php?id=100073137742165", threadID);
   };
 
   if ((event.body.toLowerCase() == "hi") || (event.body.toLowerCase() == "hi")) {
@@ -139,15 +139,15 @@ module.exports.handleEvent = function({ api, event, args, Threads }) {
   };
 
   if ((event.body.toLowerCase() == "admin m là ai v bot") || (event.body.toLowerCase() == "admin m la ai v bot")) {
-    return api.sendMessage("️Admin tao tên Thắng có gì dùng lệnh /admin list hoặc /info để biết thêm chi tiết", threadID);
+    return api.sendMessage("️Admin tao tên Quang có gì dùng lệnh /admin list hoặc /info admin để biết thêm chi tiết", threadID);
   };
 
   if ((event.body.toLowerCase() == "admin m là ai vậy bot") || (event.body.toLowerCase() == "admin m la ai vậy bot")) {
-    return api.sendMessage("️Admin tao tên Thắng  có gì dùng lệnh /admin list hoặc /info để biết thêm chi tiết", threadID);
+    return api.sendMessage("️Admin tao tên Quang có gì dùng lệnh /admin list hoặc /info để biết thêm chi tiết", threadID);
   };
 
   if ((event.body.toLowerCase() == "tt đi mn") || (event.body.toLowerCase() == "tt đi mn")) {
-    return api.sendMessage("️1 là tương tác, 2 là ăn kick :))))", threadID);
+    return api.sendMessage("️1 là tương tác, 2n là ăn kick :))))", threadID);
   };
 
   if ((event.body.toLowerCase() == "flop quá") || (event.body.toLowerCase() == "flop qua")) {
@@ -163,7 +163,7 @@ module.exports.handleEvent = function({ api, event, args, Threads }) {
   };
 
   if ((event.body.toLowerCase() == "cc bot") || (event.body.toLowerCase() == "cc bot")) {
-    return api.sendMessage("️Chửi gì đấy con dog :) bố mmày nhịn mày lâu lắm rồi đấy nhá", threadID);
+    return api.sendMessage("️Chửi gì đấy con dog :) bố mày nhịn mày lâu lắm rồi đấy nhá", threadID);
   };
 
   if ((event.body.toLowerCase() == "bot dthw quá") || (event.body.toLowerCase() == "bot dthw qua")) {
@@ -223,7 +223,7 @@ module.exports.handleEvent = function({ api, event, args, Threads }) {
   };
 
   if ((event.body.toLowerCase() == "bot có link fb của admin ko") || (event.body.toLowerCase() == "bot co link fb của admin ko")) {
-    return api.sendMessage("Dĩ nhiên rồi có gì liên hệ anh ấy nha <3\nLink fb nè: https://www.facebook.com/thanghokngu1", threadID);
+    return api.sendMessage("Dĩ nhiên rồi có gì liên hệ anh ấy nha <3\nLink fb nè: https://www.facebook.com/profile.php?id=100073137742165", threadID);
   };
 
   if ((event.body.toLowerCase() == "bot làm thơ đi") ||  (event.body.toLowerCase() == "bot lam tho di")) {

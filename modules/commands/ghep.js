@@ -1,12 +1,13 @@
 module.exports.config = {
-  name: "ghepcap",
+  name: "ghep",
   version: "1.0.0", 
   hasPermssion: 0,
   credits: "Hungcho edit by Hungdz30cm",
   description: "Ghep doi ngau nhien",
   commandCategory: "random-img", 
-  usages: "", 
+  usages: "ghep", 
   cooldowns: 0,
+  dependencies: [] 
 };
 module.exports.run = async function({ api, event, args, Users, Threads, Currencies }) {
         const axios = global.nodemodule["axios"];

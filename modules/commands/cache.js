@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: "NTKhang",
 	description: "Xóa file hoặc folder trong thư mục cache",
-	commandCategory: "Admin",
+	commandCategory: "System",
 	usages: "\ncache start <text>\ncache ext <text>\ncache <text>\ncache [để trống]\ncache help\nNOTE: <text> là ký tự bạn điền vào tùy ý",
 	cooldowns: 5
 };

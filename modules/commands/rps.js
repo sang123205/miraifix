@@ -1,10 +1,11 @@
+
 module.exports.config = {
     name: "rps",
     version: "1.0.0",
     hasPermssion: 0,
     credits: "JustGon", //Giữ Credit tôn trọng thằng làm ra
     description: "búa bao kéo",
-    commandCategory: "rps",
+    commandCategory: "game-mp",
     usages: "[tag]",
     cooldowns: 5,
     dependencies: {
@@ -14,9 +15,7 @@ module.exports.run = async function ({ event, api, args }) {
     function outMsg(data) {
         api.sendMessage(data, event.threadID, event.messageID);
        }
-    if(!args[0]) {
-        outMsg("Vui lòng nhập ✌️ hoặc 👊 hoặc ✋")
-    }
+   
     var turnbot = ["✌️","👊","✋"]
           var botturn = turnbot[Math.floor(Math.random() * turnbot.length)] 
           var userturn = args.join( " ")
@@ -43,6 +42,6 @@ module.exports.run = async function ({ event, api, args }) {
         }
       }
         } else {
-          return outMsg("Sai Format")
+          return outMsg("Vui lòng nhập ✌️ hoặc 👊 hoặc ✋")
         }
 }

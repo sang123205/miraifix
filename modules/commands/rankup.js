@@ -8,10 +8,10 @@ module.exports.config = {
 	dependencies: {
 		"fs-extra": ""
 	},
-	cooldowns: 5,
+	cooldowns: 1,
 	envConfig: {
 		autoUnsend: true,
-		unsendMessageAfter: 5
+		unsendMessageAfter: 100
 	}
 };
 
@@ -47,7 +47,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
 			.replace(/\{level}/g, level);
 			
 		if (existsSync(__dirname + "/cache/rankup/")) mkdirSync(__dirname + "/cache/rankup/", { recursive: true });
-		if (existsSync(__dirname + `/cache/rankup/${event.threadID}.gif`)) arrayContent = { body: messsage, attachment: createReadStream(__dirname + `/cache/rankup/${event.threadID}.gif`), mentions: [{ tag: name, id: senderID }] };
+		if (existsSync(__dirname + `/cache/rankup/rankup.gif`)) arrayContent = { body: messsage, attachment: createReadStream(__dirname + `/cache/rankup/rankup.gif`), mentions: [{ tag: name, id: senderID }] };
 		else arrayContent = { body: messsage, mentions: [{ tag: name, id: senderID }] };
 		const moduleName = this.config.name;
 		api.sendMessage(arrayContent, threadID, async function (error, info){
@@ -64,16 +64,16 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
 
 module.exports.languages = {
 	"vi": {
-		"on": "bật",
 		"off": "tắt",
+		"on": "bật",
 		"successText": "thành công thông báo rankup!",
-		"levelup": "Trình độ chém gió của {name} đã đạt tới level {level}"
+		"levelup": "Trình độ chơi game của {name} đã đạt tới ProVip , tiếp tục cày game để vượt qua kỉ lục nhé bạn Lv của bạn là {level}"
 	},
 	"en": {
 		"on": "on",
 		"off": "off",
 		"successText": "success notification rankup!",
-		"levelup": "{name}, your keyboard hero level has reached level {level}",
+		"levelup": "{name}, fuck the dog level {level}",
 	}
 }
 

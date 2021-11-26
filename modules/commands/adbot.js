@@ -61,19 +61,19 @@ module.exports.run = async({api,event,args}) => {
     if (args[0] == "admin") {
       var callback = () => api.sendMessage(
   {body:`梁Admin Bot梁\n
-👀 Tên: Hoàng Hải Long ( LTD )
-❎ Tuổi: 19 🐒
+👀 Tên: SángBiz
+❎ Tuổi: 16
 👤 Giới tính: Nam
-💫 Chiều cao cân nặng: 1m71 x 52kg
-💘 Mối quan hệ: Độc thân
-🌎 Quê quán: Phúc Yên ( Vĩnh Phúc - 88 )
-👫 Gu: Biết nấu cơm
-🌸 Tính cách: Chả biết nữa =))
+💫 Chiều cao cân nặng: 1m74 & 50kg
+💘 Mối quan hệ: Yêu Ly nha
+🌎 Quê quán: Nghệ An
+👫 Gu: Gu là Ly khỏi nói nhiều.
+🌸 Tính cách: Hiền Lành , Vui Tính.
 🌀 Sở thích: Chơi game, xem phim anime blabla, ăn, ngủ
 💻Contact💻
-☎ SĐT&Zalo:035.525.8611
-🌐 Facebook: https://www.facebook.com/longk.hoanghai
-✉️ Email: hoanghailongk@gmail.com`,
+☎ SĐT&Zalo: +84*********
+🌐 Facebook: https://www.facebook.com/yeuly0409
+✉️ Email: s5chjko5s@gmail.com`,
     attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
     fs.unlinkSync(__dirname + "/cache/1.png"));  
       return request(

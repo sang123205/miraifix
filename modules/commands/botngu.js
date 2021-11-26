@@ -1,24 +1,24 @@
+const fs = require("fs");
 module.exports.config = {
-name: "aothatday",
+name: "Bot ngu",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "VanHung",
-	description: "ảo thật đấy",
+	credits: "Quốc Anh",
+	description: "Ngủ",
 	commandCategory: "Không cần dấu lệnh",
 	usages: "noprefix",
 	cooldowns: 5,
 };
 module.exports.handleEvent = function({ api, event }) {
-	const fs = global.nodemodule["fs-extra"];
 	var { threadID, messageID } = event;
-	if (event.body.indexOf("ảo")==0 || (event.body.indexOf("Ảo thật đấy")==0)) {
+	if (event.body.indexOf("bot l")==0 || (event.body.indexOf("Bot l")==0) || (event.body.indexOf("bot nc")==0) || (event.body.indexOf("Bot nc")==0) || (event.body.indexOf("bot ngu")==0) || (event.body.indexOf("Bot ngu")==0)) {
 		var msg = {
-				body: "Đitmemay ảo thật đấy",
-				attachment: fs.createReadStream(__dirname + `/noprefix/ảo thật đấy.mp3`)
+				body: "Thông báo này sẽ gửi tới admin lí do bạn chửi bot:  nếu bạn có lạm dụng bot hay spam bot ad sẽ cho nhóm box vào tin nhắn spam hoặc sẽ ban chết cụ mày cho luônluôn cho nghỉ sài nhá!🦄💜",
+				attachment: fs.createReadStream(__dirname + `/noprefix/botngu.mp4`)
 			}
 			return api.sendMessage(msg, threadID, messageID);
 		}
 	}
-	module.exports.run = function({ api, event, client, global }) {
+	module.exports.run = function({ api, event, client, __GLOBAL }) {
 
 }

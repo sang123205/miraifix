@@ -1,8 +1,8 @@
 module.exports.config = {
-	name: "meow",
+	name: "meo",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "Thanh Dz",
+	credits: "Quốc Anh",
 	description: "Xem Neko",
 	commandCategory: "Hình Ảnh",
 	usages: "meow [Text]",

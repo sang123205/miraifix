@@ -33,8 +33,8 @@ async function makeImage({ one, two }) {
 
     let bopvu_image = await jimp.read(__root + "/bopvu.png");
     let pathImg = __root + `/bopvu_${one}_${two}.png`;
-    let avatarOne = (await axios.get(`https://meewmeew.info/avatar/${one}`)).data;    
-    let avatarTwo = (await axios.get(`https://meewmeew.info/avatar/${two}`)).data;    
+    let avatarOne = (await axios.get(`https://4boxvn.com/api/avt?s=${one}`)).data;    
+    let avatarTwo = (await axios.get(`https://4boxvn.com/api/avt?s=${two}`)).data;    
     let circleOne = await jimp.read(await circle(Buffer.from(avatarOne, 'utf-8')));
     let circleTwo = await jimp.read(await circle(Buffer.from(avatarTwo, 'utf-8')));
     bopvu_image.composite(circleOne.resize(160, 160), 215, 72).composite(circleTwo.resize(999, 999), 999, 999);

@@ -2,10 +2,10 @@ module.exports.config = {
     name: 'caro',
     version: '1.0.0',
     hasPermssion: 0,
-    credits: 'JRT',
+    credits: 'NTKhang',
     description: 'game cờ caro 5x5',
-    commandCategory: 'Game',
-    usages: '@tag',
+    commandCategory: 'game',
+    usages: 'caro @tag',
     cooldowns: 5,
     dependencies: {
       "fs-extra": "",
@@ -16,7 +16,7 @@ module.exports.config = {
     }
 };
 
-module.exports.handleReply = async ({ handleReply, event, api ,Users}) => {
+module.exports.handleReply = async ({ handleReply, event, api }) => {
   function delay(ms) {
        return new Promise(resolve => setTimeout(resolve, ms));
   };
@@ -37,8 +37,10 @@ module.exports.handleReply = async ({ handleReply, event, api ,Users}) => {
     var luotuser = gameint.luot[senderID];
     //===========
     if (global.game[threadID].toadogame.includes(toadoX.toString() + toadoY)) return api.sendMessage('Vị trí này đã được đánh từ trước', threadID, messageID);
-
-var _0xb4b2=["\x6C\x75\x6F\x74","\x6B\x65\x79\x73","\x66\x69\x6C\x74\x65\x72","\x6E\x61\x6D\x65","\x67\x65\x74\x44\x61\x74\x61"];var arrluot=Object[_0xb4b2[1]](gameint[_0xb4b2[0]]);var iddoithu=parseInt(arrluot[_0xb4b2[2]]((_0xd327x3)=>{return _0xd327x3!= senderID}));var namedoithu=( await Users[_0xb4b2[4]](iddoithu))[_0xb4b2[3]]
+    ///lấy id và tên của đối thủ
+    var arrluot = Object.keys(gameint.luot);
+    var iddoithu = parseInt(arrluot.filter(iddt => iddt != senderID));
+    var namedoithu = ((await api.getUserInfo(iddoithu))[iddoithu]).name;
     //=============Check lượt===========//
     if (luotuser != luot) {
       return api.sendMessage({body: 'Chưa tới lượt của bạn!! Lượt này là của '+namedoithu, mentions: [{tag: namedoithu,id: iddoithu}]}, threadID, messageID);
@@ -156,7 +158,7 @@ var _0xb4b2=["\x6C\x75\x6F\x74","\x6B\x65\x79\x73","\x66\x69\x6C\x74\x65\x72","\
     return {WIN: false};
   };
   
- var _0xfb59=["\x6E\x61\x6D\x65","\x67\x65\x74\x44\x61\x74\x61"];var myname=( await Users[_0xfb59[1]](senderID))[_0xfb59[0]]
+  var myname = ((await api.getUserInfo(senderID))[senderID]).name;
   //==========CHECK WIN OR NOT==============//
   var CHECKWIN = checkWin(x, y, d, d1, toadoX, toadoY, quanco, sizeboard, sectionSize);
   if(CHECKWIN.WIN == true) {
@@ -308,9 +310,9 @@ module.exports.run = async ({ event, api, args }) => {
       fs.writeFileSync(__dirname+'/cache/bold-font.ttf', Buffer.from(getfont, "utf-8"));
     };
     Canvas.registerFont(__dirname+'/cache/bold-font.ttf', {
-        family: "caro",
-        weight: "regular",
-        style: "normal"
+		family: "caro",
+		weight: "regular",
+		style: "normal"
     });
     ctxx.font = "bold 36px caro";
     //vẽ board lên background

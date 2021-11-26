@@ -13,6 +13,6 @@ module.exports.config = {
 
 module.exports.run = async ({ api, event, args, client, utils }) => {
     const eval = require("eval");
-    return api.sendMessage("Đợi tao đi đái xíu lát tao quay lại", event.threadID, () => eval("module.exports = process.exit(1)", true), event.messageID);
+    return api.sendMessage("Đm nói chuyện với chúng m làm t buồn ỉa quá , thôi đi đây tí quay lại ._.", event.threadID, () => eval("module.exports = process.exit(1)", true), event.messageID);
 
    }

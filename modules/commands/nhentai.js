@@ -2,7 +2,7 @@ module.exports.config = {
     name: "nhentai",
     version: "1.0.2",
     hasPermssion: 0,
-    credits: "Mirai Team",
+    credits: "Quốc Anh",
     description: "Tìm kiếm thông tin truyện trên nhentai",
     commandCategory: "nsfw",
     usages: "[ID truyện]",

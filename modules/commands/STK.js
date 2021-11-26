@@ -3,7 +3,7 @@ module.exports.config = {
 	name: "stk",
     version: "1.0.1",
 	hasPermssion: 0,
-	credits: "Long LTD", 
+	credits: "mq", 
 	description: "no prefix",
 	commandCategory: "Không cần dấu lệnh",
 	usages: "stk",
